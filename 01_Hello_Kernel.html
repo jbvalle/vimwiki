@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<ol>
+<ul>
 <li>
 Create following files:
 
-</ol>
+</ul>
     
 <ul>
 <li>
@@ -23,47 +23,47 @@ File: <a href="Makefile.html">Makefile</a> =
 
 </ul>
 
-<ol>
+<ul>
 <li>
 Execute the Makefile
 
-</ol>
+</ul>
 <blockquote>
 $ make
 </blockquote>
     
-<ol>
+<ul>
 <li>
 By now the kernel object file should have been created, now load the module to the kernel:
 
-</ol>
+</ul>
 <blockquote>
 $ sudo insmod mymodule.ko
 </blockquote>
     
-<ol>
+<ul>
 <li>
 Inspect the modules with:
 
-</ol>
+</ul>
 <blockquote>
 $ lsmod | grep mymodule
 </blockquote>
 
-<ol>
+<ul>
 <li>
 Now check for the kernel log with:
 
-</ol>
+</ul>
 <blockquote>
 $ dmesg | tail -5
 </blockquote>
     
-<ol>
+<ul>
 <li>
 Now remove the module with:
 
-</ol>
+</ul>
 <blockquote>
 $ sudo rm mymodule
 </blockquote>
