@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Communication</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+Here the kernel handles communication between processes.
+</p>
+
+<p>
+Two models are used for inter-process communication:
+</p>
+<ul>
+<li>
+Message Passing: Meaning processes exchange messages with one another
+
+<li>
+Shared Memory: Processes share a memory region in order to communicate
+
+</ul>
+
+<p>
+Systemcalls that are sent are: pipe(), shmget(), mmap()
+</p>
+<ul>
+<li>
+pipe():
+
+<ul>
+<li>
+This syscall is used to enable inter-process communication between processes
+
+<li>
+pipe() is used to open <a href="file-descriptors.html">file-descriptors</a>
+
+</ul>
+<li>
+shmget():
+
+<ul>
+<li>
+stands for shared memory segment
+
+<li>
+this syscall is used for shared memory communication
+
+<li>
+this syscall is sent in order to access the shared memory and thereby access the messages within the memory in order for processes to communicate
+
+</ul>
+<li>
+mmap():
+
+<ul>
+<li>
+This syscall is used to map or unmap files or devices into the content of virtual memory space of the processes
+
+</ul>
+</ul>
+
+</body>
+</html>
