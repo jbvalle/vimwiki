@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>01_Hello_Kernel</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+mymodule.c
+</p>
+
+<p>
+```
+//Setup
+#include &lt;linux/module.h&gt;
+#include &lt;linux/init.h&gt;
+</p>
+
+<p>
+//Meta information
+//Adding License due to some distros not loading free GPL Licensed modules
+MODULE_LICENSE("GPL")
+MODULE_AUTHOR("NAME") //Edit this
+MODULE_DESCRIPTION("Some Description") //Edit this
+</p>
+
+<p>
+//Loading Module into Kernel
+static int __init ModuleInit(){
+</p>
+<blockquote>
+//Output to kernel log
+printk("Hello, Kernel!\n");
+</blockquote>
+<blockquote>
+//Return succesfull
+return 0;
+</blockquote>
+<p>
+}
+</p>
+
+<p>
+static void __exit ModuleExit(void){
+</p>
+<blockquote>
+printk("Goodbye, KERNEL!\n");
+</blockquote>
+<p>
+}
+</p>
+
+<p>
+//Add function to module initialization
+module_init(ModuleInit);
+module_exit(ModuleExit);
+```
+</p>
+
+</body>
+</html>
