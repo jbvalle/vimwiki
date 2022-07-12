@@ -8,57 +8,65 @@
 </head>
 <body>
 
-<p>
-mymodule.c
-</p>
+<ol>
+<li>
+Create following files:
 
-<p>
-```
-//Setup
-#include &lt;linux/module.h&gt;
-#include &lt;linux/init.h&gt;
-</p>
+</ol>
+    
+<ul>
+<li>
+File: <a href="mymodule.html">mymodule.c</a> =
 
-<p>
-//Meta information
-//Adding License due to some distros not loading free GPL Licensed modules
-MODULE_LICENSE("GPL")
-MODULE_AUTHOR("NAME") //Edit this
-MODULE_DESCRIPTION("Some Description") //Edit this
-</p>
+<li>
+File: <a href="Makefile.html">Makefile</a> = 
 
-<p>
-//Loading Module into Kernel
-static int __init ModuleInit(){
-</p>
+</ul>
+
+<ol>
+<li>
+Execute the Makefile
+
+</ol>
 <blockquote>
-//Output to kernel log
-printk("Hello, Kernel!\n");
+$ make
 </blockquote>
-<blockquote>
-//Return succesfull
-return 0;
-</blockquote>
-<p>
-}
-</p>
+    
+<ol>
+<li>
+By now the kernel object file should have been created, now load the module to the kernel:
 
-<p>
-static void __exit ModuleExit(void){
-</p>
+</ol>
 <blockquote>
-printk("Goodbye, KERNEL!\n");
+$ sudo insmod mymodule.ko
 </blockquote>
-<p>
-}
-</p>
+    
+<ol>
+<li>
+Inspect the modules with:
 
-<p>
-//Add function to module initialization
-module_init(ModuleInit);
-module_exit(ModuleExit);
-```
-</p>
+</ol>
+<blockquote>
+$ lsmod | grep mymodule
+</blockquote>
+
+<ol>
+<li>
+Now check for the kernel log with:
+
+</ol>
+<blockquote>
+$ dmesg | tail -5
+</blockquote>
+    
+<ol>
+<li>
+Now remove the module with:
+
+</ol>
+<blockquote>
+$ sudo rm mymodule
+</blockquote>
 
 </body>
 </html>
