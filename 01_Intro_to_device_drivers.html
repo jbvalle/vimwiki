@@ -18,5 +18,75 @@ Device drivers make it possible for developers to interact with the kernel, with
 A special feature of device drivers is their modularity , which makes it possible to be programmed separately from the kernel and be plugged in during runtime if necessary, this special feature makes to very easy to write drivers.
 </p>
 
+<div id="Intro-Concept of policy free software"><h2 id="Concept of policy free software" class="header"><a href="#Intro-Concept of policy free software">Concept of policy free software</a></h2></div>
+
+<p>
+A core concept of linux is applying software which is supposed to provide machanism, by providing capabilities without constraining the user by enforcing particular policies to be capable of using the software.
+</p>
+
+<div id="Intro-Typical Policy-free driver characteristics"><h2 id="Typical Policy-free driver characteristics" class="header"><a href="#Intro-Typical Policy-free driver characteristics">Typical Policy-free driver characteristics</a></h2></div>
+
+<ul>
+<li>
+support for synchronous and asynchronous operations
+
+<li>
+the ability to be opened multiple times
+
+<li>
+the ability to exploit the full capabilities of the hardware
+
+<li>
+the lack of software layers to simplify things
+
+</ul>
+
+<hr />
+
+<div id="Intro-Responsibilities of a kernel"><h2 id="Responsibilities of a kernel" class="header"><a href="#Intro-Responsibilities of a kernel">Responsibilities of a kernel</a></h2></div>
+
+<div id="Intro-Responsibilities of a kernel-Process Management"><h3 id="Process Management" class="header"><a href="#Intro-Responsibilities of a kernel-Process Management">Process Management</a></h3></div>
+<ul>
+<li>
+creating and destroying processes
+
+<li>
+handling input and output of processes
+
+<li>
+handling communication among different processes through singlas, pipes, etc.
+
+<li>
+handling the sceduler, which controls how processes share the cpu
+
+</ul>
+
+<div id="Intro-Responsibilities of a kernel-Memory Management"><h3 id="Memory Management" class="header"><a href="#Intro-Responsibilities of a kernel-Memory Management">Memory Management</a></h3></div>
+<ul>
+<li>
+the kernel creates a virtual addressing space
+
+<ul>
+<li>
+What is a virtual addressing space? 
+      Its a virtual space on the in memory which is allocated, specifically for one process or application. Giving the process the illusion of having the whole memory for themself, but in reality having a subset of the memory available.
+
+</ul>
+</ul>
+
+<div id="Intro-Responsibilities of a kernel-Filesystems"><h3 id="Filesystems" class="header"><a href="#Intro-Responsibilities of a kernel-Filesystems">Filesystems</a></h3></div>
+<ul>
+<li>
+The linux kernel builds a structured filesystem on top of the structured hardware, the resulting file abstraction where everything in Unix could be considered a file is used throughout the system.
+
+</ul>
+
+<div id="Intro-Responsibilities of a kernel-Device Control"><h3 id="Device Control" class="header"><a href="#Intro-Responsibilities of a kernel-Device Control">Device Control</a></h3></div>
+<ul>
+<li>
+For every peripheral/physical device a piece of code must exist (exception is the processor and memory), that tells the kernel which operations to perform in order to interact with that physical device. That piece of code is called a device driver.
+
+</ul>
+
 </body>
 </html>
