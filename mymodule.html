@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>mymodule</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<pre C>
+//Setup
+#include &lt;linux/module.h&gt;
+#include &lt;linux/init.h&gt;
+
+
+//Meta information
+//Adding License due to some distros not loading free GPL Licensed modules
+MODULE_LICENSE("GPL")
+MODULE_AUTHOR("NAME") //Edit this
+MODULE_DESCRIPTION("Some Description") //Edit this
+
+//Function called when module is loaded to the kernel
+static int __init ModuleInit(){
+    
+    //Output to kernel log
+    printk("Hello, Kernel!\n");
+    
+    //Return succesfull
+    return 0;
+}
+
+// Function which is called when module is removed from kernel
+static void __exit ModuleExit(void){
+
+    printk("Goodbye, KERNEL!\n");
+}
+
+//Add function to module initialization
+module_init(ModuleInit);
+//Add function to module module removal
+module_exit(ModuleExit);
+</pre>
+
+</body>
+</html>
