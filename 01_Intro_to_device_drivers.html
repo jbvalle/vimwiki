@@ -88,5 +88,108 @@ For every peripheral/physical device a piece of code must exist (exception is th
 
 </ul>
 
+<div id="Intro-Responsibilities of a kernel-Netoworking"><h3 id="Netoworking" class="header"><a href="#Intro-Responsibilities of a kernel-Netoworking">Netoworking</a></h3></div>
+<ul>
+<li>
+Networking is a complex tasks which is handled by multiple processes. This process management is handled by the operating system
+
+</ul>
+
+    
+<hr />
+
+<div id="Intro-Module and Device Class"><h2 id="Module and Device Class" class="header"><a href="#Intro-Module and Device Class">Module and Device Class</a></h2></div>
+
+<p>
+Modules can be categorized in 3 classes:
+</p>
+<ul>
+<li>
+Char Drivers, that implement char devices
+
+<li>
+Block Drivers, that implement block devices
+
+<li>
+Network Drivers, that implement network devices
+
+</ul>
+
+<div id="Intro-Module and Device Class-Char Devices (Device Control Interface)"><h3 id="Char Devices (Device Control Interface)" class="header"><a href="#Intro-Module and Device Class-Char Devices (Device Control Interface)">Char Devices (Device Control Interface)</a></h3></div>
+<ul>
+<li>
+Char Devices are handled by the filesystem management system calls such as open(), close(), read() write()
+
+<li>
+Char Devices are accessed with a stream of bytes, just like a file. Examples are /dev/console and /dev/ttyS0 and friends
+
+<li>
+These devices are accessed by filesystem notes that such as /dev/tty1 and /dev/lp0
+
+<li>
+The difference between a regular file is, that normaly you can move back and forth within a file, a char device usually is only accessable sequentially, hower syscalls such as mmap and lseek could grant such access
+
+</ul>
+
+<div id="Intro-Module and Device Class-Block devices (Filessystem Management)"><h3 id="Block devices (Filessystem Management)" class="header"><a href="#Intro-Module and Device Class-Block devices (Filessystem Management)">Block devices (Filessystem Management)</a></h3></div>
+<ul>
+<li>
+Each block devices is similarly to char devices accessed by filessytem nodes in the /dev/directory that can be read and written to just like char devices. The difference between char devices is only internally in the kernel - driver interface.
+
+<li>
+Block devices can only handle I/O operations that transfer a block of usually 512 bytes or a larger power of 2 bytes.
+
+<li>
+Similarly to char devices block devices are also accessed by filesystem nodes in the /dev/directoy. 
+
+</ul>
+
+<div id="Intro-Module and Device Class-Network Interfaces devices (Network Management)"><h3 id="Network Interfaces devices (Network Management)" class="header"><a href="#Intro-Module and Device Class-Network Interfaces devices (Network Management)">Network Interfaces devices (Network Management)</a></h3></div>
+<ul>
+<li>
+Here network interfaces that are able to exchagne data with other hosts is considered a network device
+
+<li>
+These interface devices can be hardware but also a software device, such as the <a href="loopback_interface.html">loopback_interface</a>
+
+<li>
+A network interface is in charge of sending and receiving data packets, those processes are handled by the kernel subsystem, without knowing the actual packets nor individual connections. Hence a network driver only handles sending and receiving packets.
+
+<li>
+Some network connections like TCP are stream-oriented, nonetheless, the network devices only handles the exchange of the packets.
+
+<li>
+Because network devices are not stream oriented, having a network interface mapped to a filesystem node, such as /dev/tty1 is not possible. Instead, a unique name is assigned to the network interface to provide access to them. Communication isnt handled by read() and write() calls like with char or block devices. Instead kernel call functions are executed that are soley related to packet sending and receiving.
+
+</ul>
+
+<hr />
+
+<div id="Intro-Software Drivers"><h2 id="Software Drivers" class="header"><a href="#Intro-Software Drivers">Software Drivers</a></h2></div>
+
+<p>
+A Special kind of driver is the software driver. Its not explicitely associated with a device, instead its a piece of software that is implemented in the kernel code. Such as the filesystem, which organizes informations of each file, determines how they are stored, for how long and what kind of data structures it should be implemented. This kind of driver is among the most important modules of the unix system. Normally its very  unusual for a developer to actually write a filesytem module, because the official kernel already come equipped with that code.
+</p>
+
+<hr />
+<div id="Intro-Security"><h2 id="Security" class="header"><a href="#Intro-Security">Security</a></h2></div>
+
+<p>
+Security conerns play a major role. Hence loading modules into the kernel is possible for an authorized user, additionally the call init_module furthmore checks if the process which is sending a systemcall to load the module, is authorized. As a programmer encoding security policies within the driver code should be avoided. Its best handled by the system administrator. 
+</p>
+
+<p>
+The C programming language can also lead to errors, the most common one is writing to buffers without checking the total size, therefore overwriting unrelated data, which could comprise the while system. Additionally a programmer should always be careful with uninitialized memory or memory which has not been zeroed yet, otherwise it could worst case lead to information leakage or other errors, which could affect the whole system. 
+</p>
+
+<p>
+Those errors can usually be easily avoided, by highly controlling, constricting and narrowly defining the interface with the user.
+</p>
+
+<p>
+A Programmer should also be careful with running precompiled things, such as a kernel image. Usually official distributions can be trusted, a programmer should always be suspicious of such things.
+<hr />
+</p>
+
 </body>
 </html>

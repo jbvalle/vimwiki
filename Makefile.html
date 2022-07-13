@@ -8,29 +8,17 @@
 </head>
 <body>
 
-<ol>
-<li>
-Add module name to obj-module variable
-
-</ol>
-<p>
+<pre Makefile>
+# Add module name to obj-module variable
 obj-m += mymodule.o
-</p>
 
-<p>
 all:
-</p>
-<blockquote>
-#Execute Module in the location of kernel/build and output file to current directory and execute module target from Makefile
-make -C /lib/modules/\((shell uname -r)/build M=\)(PWD) modules
-</blockquote>
+    #Execute Module in the location of kernel/build and output file to current directory and execute module target from Makefile
+    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
-<p>
 clean: 
-</p>
-<blockquote>
-make -C /lib/modules/\((shell uname -r)/build M=\)(PWD) clean
-</blockquote>
+    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+</pre>
 
 </body>
 </html>
