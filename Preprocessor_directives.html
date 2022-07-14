@@ -109,5 +109,13 @@ or
 if the __VA_OPT__ token is set then it expands to a comma and __VA_ARGS__ is set otherwise __VA_OPT__ and anything after that is removed. This feature has been introduced with C++20. Using ## has been kept in order to stay backwards compatible with older versions.
 </p>
 
+<div id="Preprocessor Directives-Variadic macros-Loops with macros"><h3 id="Loops with macros" class="header"><a href="#Preprocessor Directives-Variadic macros-Loops with macros">Loops with macros</a></h3></div>
+
+<p>
+Writing a loop like macro function is possible. The difference between a real loop, is that the command it just placed multiple times by the preprocessor. This technique is called loop unrolling, although this method creates a bigger binary its performance is better than that of the regular loop.
+</p>
+
+<div id="Preprocessor Directives-Advantages and disadvantages of macros"><h2 id="Advantages and disadvantages of macros" class="header"><a href="#Preprocessor Directives-Advantages and disadvantages of macros">Advantages and disadvantages of macros</a></h2></div>
+
 </body>
 </html>
