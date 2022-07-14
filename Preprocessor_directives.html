@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Preprocessor_directives</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Preprocessor Directives"><h1 id="Preprocessor Directives" class="header"><a href="#Preprocessor Directives">Preprocessor Directives</a></h1></div>
+<p>
+In Generell a macro always start with a '#'. Those macros are only meaningful for the preprocessor, allowing code to be prepared before it is passed to the compiler. A code which has first been preprocessed before it has been compiled is called a translation unit or compilation unit. Though these macros are only meaningful to the preprocessor, newer gcc compilers do understand the expressions. This is can come handy when debugging a program, as the compiler may already hint a possible error in those macros. Defining a macro is called expanding the macro.
+</p>
+
+<div id="Preprocessor Directives-Macros"><h2 id="Macros" class="header"><a href="#Preprocessor Directives-Macros">Macros</a></h2></div>
+
+<p>
+Applications:
+</p>
+<ul>
+<li>
+Defining constants
+
+<li>
+Using as a function
+
+<li>
+Loop unrolling
+
+<li>
+Header guards
+
+<li>
+Code generation
+
+<li>
+Condito Compilation
+
+</ul>
+
+<div id="Preprocessor Directives-Domain Specific Language"><h2 id="Domain Specific Language" class="header"><a href="#Preprocessor Directives-Domain Specific Language">Domain Specific Language</a></h2></div>
+<p>
+Macros make it possible to write DSL, which can very useful. For example:
+</p>
+<pre C>
+#include &lt;stdio.h&gt;
+#define PRINT(VALUE) printf("%d", VALUE);
+#define LOOP_START(START,STEPS,END) for(int i = START; i &lt;= END; i=i+STEPS){
+#define LOOP_END 
+}
+
+int main(void){
+
+    int a = 20;
+    PRINT(a)
+    LOOP_START(0,2,10)
+    LOOP_END
+                    
+    return 0;
+                        
+}
+
+</pre>
+
+<p>
+The macro definitions such as PRINT , LOOP_START, LOOP_END make no sense as a C syntax but ones it has been preprocessed it becomes a valid C Code. 
+Examples for such Domain specific lanuguage are testing frameworks such as google Test where DSL is used to write, assertions, expectations and test scenarios.
+</p>
+
+<div id="Preprocessor Directives-Commands: '#' '##'"><h2 id="Commands: '#' '##'" class="header"><a href="#Preprocessor Directives-Commands: '#' '##'">Commands: '#' '##'</a></h2></div>
+<ul>
+<li>
+The '#' within a function means to convert the macro into its string for surrounded by quotation marks
+
+<li>
+The '##' within a function means to concatenate 
+
+</ul>
+
+<div id="Preprocessor Directives-Variadic macros"><h2 id="Variadic macros" class="header"><a href="#Preprocessor Directives-Variadic macros">Variadic macros</a></h2></div>
+<table>
+<tr>
+<td>
+__VA_ARGS__
+</td>
+<td>
+indicator that tells preprocessor to replace with all remaining input arguments that are not asigned to any parameter
+</td>
+</tr>
+</table>
+
+<p>
+Special case with __VA_ARGS__ if it has not been places it output an error to go past that error you could write 
+</p>
+<pre C>
+#define LOG_ERR(format, ...) fprintf(stderr, format, ##__VA_ARGS__)
+</pre>
+
+<p>
+or
+</p>
+
+<pre C>
+#define LOG_ERR(format, ...) fprintf(stderr, format __VA_OPT__(,) __VA_ARGS__)
+</pre>
+
+<p>
+if the __VA_OPT__ token is set then it expands to a comma and __VA_ARGS__ is set otherwise __VA_OPT__ and anything after that is removed. This feature has been introduced with C++20. Using ## has been kept in order to stay backwards compatible with older versions.
+</p>
+
+</body>
+</html>
