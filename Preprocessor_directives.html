@@ -121,13 +121,45 @@ Writing a loop like macro function is possible. The difference between a real lo
 Regarding debugging, programmers you compiler warning that help find errors, now in combination with an old compiler this could lead to issues. Fortunately, compiler have become much better and understand much more about the preprocessor process. So in near future this problem can be overcome.
 
 <li>
-As mentioned before macros used as unrolled loops come with a payoff, better performance for a larger binary
+As mentioned before macros used as unrolled loops come with a trade-off, better performance for a larger binary
 
 <li>
 As for software design it's generally considered best practise, the bigger you code base the more modular and smaller binaries should be. Using macros can be implemented beautifully but are when exaggerated a flat linear piece of code, thereby contradicting modular hiarchical good practise coding conventions. 
 
 <li>
-As for better performance for a bigger binary, one could argue that better performance start with better algorithms, therefore optimization priorities should lay in the software mechanism and functionality itself, therefore the payoff for a slightly better performance, is not satisfying enough for the sacrifice made.
+As for better performance for a bigger binary, one could argue that better performance start with better algorithms, therefore optimization priorities should lay in the software mechanism and functionality itself, therefore the trade-off for a slightly better performance, is not satisfying enough for the sacrifice made.
+
+</ul>
+
+<div id="Preprocessor Directives-General Optimization Paradox"><h2 id="General Optimization Paradox" class="header"><a href="#Preprocessor Directives-General Optimization Paradox">General Optimization Paradox</a></h2></div>
+<p>
+In order to make thinks faster, more efficient, more powerful the cpu requires a linear already preprocesses approach, which doesn't require alot of jumping around inside the code. Whereas, good software design is rather non-linear hierarchical and therefore contradicting eachothers' philosophies. Because of that, those aspects have to be wheighted out for every project.
+</p>
+
+
+<div id="Preprocessor Directives-Conditional Compilation"><h2 id="Conditional Compilation" class="header"><a href="#Preprocessor Directives-Conditional Compilation">Conditional Compilation</a></h2></div>
+<p>
+This is a C feature often used in C++ Code. Its a method to that allows passing different preprocessed source code to the compiler depending on macros.
+</p>
+
+<p>
+List of directive for conditional compilation:
+</p>
+<ul>
+<li>
+#ifdef
+
+<li>
+#ifndef
+
+<li>
+#else
+
+<li>
+#elif
+
+<li>
+#endif
 
 </ul>
 
