@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Texas-Instruments-MSP430-Family</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Signals and Functions"><h1 id="Signals and Functions" class="header"><a href="#Signals and Functions">Signals and Functions</a></h1></div>
+<p>
+The MSP430 Family Chips are equipped with a number of packages serving specific functions. These functions can be accessed or configured using the associated pins connected to these packages. These functions and signals including there description can be looked up in the &lt;Terminal Function&gt; section of the documentation. In order to operate microcontrollers, these pins first have to be configured properly in order to function.
+</p>
+
+<div id="Function blocks"><h1 id="Function blocks" class="header"><a href="#Function blocks">Function blocks</a></h1></div>
+<p>
+The functions associated with each pin can be viewed in documenation in the &lt;Fucntional Block Diagram Section&gt;. The functions are illustrated as block. These function block interact via a Memory Data Bus (MDB) and a Memory Address Bus (MABA). MSP430 Devices always come with flash devices and their architecture are designed using Von Neumann Design.
+</p>
+
+<div id="Memory"><h1 id="Memory" class="header"><a href="#Memory">Memory</a></h1></div>
+<p>
+MSP430 Chips are 16 Bit. Meaning their MAB has 16 lines therefore two to the power of 16 addresses can be accessed.
+</p>
+
+<p>
+8 Bits represent a byte and 16 Bits represent a word. Fetching or transfering a word usually takes on clock cycle. The address of a word in msp430 chips always start at even addresses. Fetching a word at odd addresses will result as an invalid instruction in case of msp430 chips. 
+</p>
+
+<p>
+Bytes in memory are organized in little endian format. This seems as a logical format, hower when debugging the addresses increase from left to right, therefore the LSByte will be displayed first resulting in an awkward format. Therefore its useful to display them as words of bytes instead.
+</p>
+
+<div id="Memory Map"><h1 id="Memory Map" class="header"><a href="#Memory Map">Memory Map</a></h1></div>
+<p>
+The memory map shows the type of memory at each address. In a finer scale it also displays the registers and their function at specific addresses. This can be view in the datasheet in the &lt;Peripheral File Map&gt; section.
+</p>
+
+<p>
+Some of the regions displayed are:
+</p>
+<ul>
+<li>
+<a href="Special function registers.html">Special function registers</a>
+
+<li>
+<a href="Peripheral registers with byte or word access.html">Peripheral registers with byte or word access</a>
+
+<li>
+<a href="Random Access Memory.html">Random Access Memory</a>
+
+<li>
+<a href="Bootloader.html">Bootloader</a>
+
+<li>
+<a href="Code Memory.html">Code Memory</a>
+
+<li>
+<a href="Interrupt and Reset Vectors.html">Interrupt and Reset Vectors</a>
+
+</ul>
+
+<div id="Central Processing Unit"><h1 id="Central Processing Unit" class="header"><a href="#Central Processing Unit">Central Processing Unit</a></h1></div>
+<p>
+The purpose of the CPU is to execute the instructions placed in memory until an exception occurs. The maximum CPU frequency is f_MCLK. 
+</p>
+
+<p>
+The CPU also includes:
+</p>
+<ul>
+<li>
+The needed logic to decode the instructions and implement them
+
+<li>
+An arithmetic logic unit ALU to perform computation
+
+<li>
+16 Registers R0-R15:
+
+<ul>
+<li>
+The Registers do not have assigned addresses
+
+<li>
+Each Register can hold a word of 16 bits
+
+<li>
+The first four Registers R0-R3 have designated functions
+
+<li>
+R4-R15 are general purpose Registers
+
+<li>
+When written, either with words or bytes, the lower byte is written to, whereas the upper byte is cleared with zeroes.
+
+</ul>
+</ul>
+
+<p>
+These having that many registers is characteristic for a reduced instruction set computer.  In contrast in complext instruction set registers operation on data must first go through register W and indirect addressing is only restricted to register FSR. Typically these CISC have accumulators registers dedicated for data operations and addressing. For example a CISC could have one register for data and two index registers for addressing whereas the RISC of a MSP430 Chip could serve the same purpose however providing 12 Registers i.e. R4-R15 serving for either data or addressing.
+</p>
+
+<div id="Central Processing Unit-Register Functions"><h2 id="Register Functions" class="header"><a href="#Central Processing Unit-Register Functions">Register Functions</a></h2></div>
+<ul>
+<li>
+Program Counter PC: The program counter contains the next instruction which is to be executed (points to). These instructions are about 1 - 3 words long. These words must be aligned properly to even addresses. The least significant bit of the PC is hard wired to 0.
+
+<li>
+Stack Pointer SP: The purpose if the SP is to serve as a tracker for the Program Counter. Once a subroutine is called, the CPU jumps to the code where the subroutine is located. In order to keep track of the last PC position, the last word content of the PC is stored in the stack memory. In the case of the MSP430 family the PC content is stored in the high addresses of the main RAM. The Program counter stores the address of that most recent word. Once the PC return, the CPU executes from the address last stored by the SP.
+
+<li>
+Status Register SR: This register gives information about the last arithmetic operation. This register is a collection of single bit flags. 
+
+<li>
+Constant Generator CG: This Register stores the six most recent values. The benefit of having this register is, that the CPU does not have to execute additional fetching operations from memory, it can directly use the values stored in this register.
+
+<li>
+General Purpose Registers R4 - R15: These registers are general purpose registers that can be used either for data or addressing. Each Register can hold a 16 Bit word. hower newer MSP430X Version have been extended to 20 Bits in order to provide and access the increaded number of memory addresses. 
+
+</ul>
+
+</body>
+</html>
