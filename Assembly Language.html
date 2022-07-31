@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Assembly Language</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Assembly Language"><h1 id="Assembly Language" class="header"><a href="#Assembly Language">Assembly Language</a></h1></div>
+<p>
+In the earlier years of microcontrollers not many years ago, programming was mostly done by using Assembly Language. Today in a few cases its actually still worthwhile programming in assembly, like ISR for better efficiency. Few bit operations cannot be properly represented in C, hence assembly is necessary like bitwise rotations or binary-coded-decimal arithmetic and detailed register manipulations. 
+</p>
+
+<p>
+One of the downside of Assembly is that it is not very portable as some assembly directives might vary depending on vendors' assembler for the same device. However in some case it's still useful to learn assembly, especially for debugging, detailed interaction between software and hardware and peripherals.
+</p>
+
+<div id="Assembly Language-Assembly Layout"><h2 id="Assembly Layout" class="header"><a href="#Assembly Language-Assembly Layout">Assembly Layout</a></h2></div>
+<p>
+A typical assembly line has four parts:
+</p>
+<ul>
+<li>
+label: it starts in the first column and may be followed with a semi colon
+
+<li>
+operation: this could either be an instruction which is then translated into binary or a directive which directly controls the assembler
+
+<li>
+operand: data which needed for the instruction if necessary
+
+<li>
+comment: at the end of the line, start with ;
+
+</ul>
+
+<div id="Assembly Language-Number representation"><h2 id="Number representation" class="header"><a href="#Assembly Language-Number representation">Number representation</a></h2></div>
+<p>
+Earlier hex was used, newer assembler usually use decimal. For Hex representation there are multiple possible notion:
+</p>
+<ul>
+<li>
+$A5
+
+<li>
+h'A5'
+
+<li>
+0A5h -&gt; prefered by MSP430
+
+</ul>
+
+<div id="Assembly Language-MSP430 Assembly Guidlines"><h2 id="MSP430 Assembly Guidlines" class="header"><a href="#Assembly Language-MSP430 Assembly Guidlines">MSP430 Assembly Guidlines</a></h2></div>
+<ul>
+<li>
+No line should exceed 80 chars
+
+<li>
+Use macros provided by msp430 headers
+
+<li>
+labels start at column 1 and are 10 chars or fewer
+
+<li>
+Instructions or directives start at column 13
+
+<li>
+instructions are lower case and DIRECTIVES are UPPERCASE
+
+<li>
+Operands start at column 21
+
+<li>
+Comments start at column 45 and the first char is capitalized -&gt; for multiline comments this only counts for the first line
+
+</ul>
+
+</body>
+</html>

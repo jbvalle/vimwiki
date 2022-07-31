@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Conventional JTAG (four wires)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="JTAG"><h1 id="JTAG" class="header"><a href="#JTAG">JTAG</a></h1></div>
+
+<p>
+The use of JTAG for programming is described in the &lt;application note: Programming a Flash-Based MSP430 Using the JTAG Interface (slaa149)&gt;. Very roughly a shift register for serial input and a flip flop is connected to each jtag pin. JTAG needs at least for pins for input, output, control and clock: TDI, TDO, TMS, TCK. The JTAG Signals interface with the desktop computer through an interface: Thedetails are in the &lt;MSP-FET430 FLASH Emulation Tool (FET) User’s Guide (slau138)&gt;. Values on the JTAG pins can be loaded all at once to the shift registers which is then read serially with JTAG. The shift register is controlled by a test access port state machine (TAP controller). 
+</p>
+
+<p>
+Using the JTAG interface gives full access to the MCU. The debugger can display almost all register values of the CPU RAM and ROM and also modify them if permitted. The only catch is when debugging interrupt service routines. The debugger can trigger some interrupts when debugging the associated registers. This make it especially hard debugging ISRs. In almost all MSP430 chips the debugger can start, stop or step through code. In the datasheet the number of possible breakpoints are specified. A breakpoint is a break instruction which halts the core. This instruction is injected, once the address of the instruction is on the memory address bus which the breakpoint has been set to, the break instruction is triggered which halts the core. Furthermore, a break instruction can also be set to a specific value, meaning once a specific value is on the memory data bus the break instruction is then also triggered. 
+</p>
+
+<p>
+Some more advanced emulations modules have more advanced breakpoints in which they include a trace buffer which stores a short record of surrounding events. The details are given in the MSP430 IAR Embedded Workbench IDE User Guide and the application note Using the MSP430 EEM Debug Feature with IAR 3.30 (slaa263). 
+</p>
+
+</body>
+</html>
