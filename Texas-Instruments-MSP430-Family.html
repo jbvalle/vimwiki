@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Texas-Instruments-MSP430-Family</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Signals and Functions"><h1 id="Signals and Functions" class="header"><a href="#Signals and Functions">Signals and Functions</a></h1></div>
+<p>
+The MSP430 Family Chips are equipped with a number of packages serving specific functions. These functions can be accessed or configured using the associated pins connected to these packages. These functions and signals including there description can be looked up in the &lt;Terminal Function&gt; section of the documentation. In order to operate microcontrollers, these pins first have to be configured properly in order to function.
+</p>
+
+<div id="Function blocks"><h1 id="Function blocks" class="header"><a href="#Function blocks">Function blocks</a></h1></div>
+<p>
+The functions associated with each pin can be viewed in documenation in the &lt;Fucntional Block Diagram Section&gt;. The functions are illustrated as block. These function block interact via a Memory Data Bus (MDB) and a Memory Address Bus (MABA). MSP430 Devices always come with flash devices and their architecture are designed using Von Neumann Design.
+</p>
+
+<div id="Memory"><h1 id="Memory" class="header"><a href="#Memory">Memory</a></h1></div>
+<p>
+MSP430 Chips are 16 Bit. Meaning their MAB has 16 lines therefore two to the power of 16 addresses can be accessed.
+</p>
+
+<p>
+8 Bits represent a byte and 16 Bits represent a word. Fetching or transfering a word usually takes on clock cycle. The address of a word in msp430 chips always start at even addresses. Fetching a word at odd addresses will result as an invalid instruction in case of msp430 chips. 
+</p>
+
+<p>
+Bytes in memory are organized in little endian format. This seems as a logical format, hower when debugging the addresses increase from left to right, therefore the LSByte will be displayed first resulting in an awkward format. Therefore its useful to display them as words of bytes instead.
+</p>
+
+<div id="Memory Map"><h1 id="Memory Map" class="header"><a href="#Memory Map">Memory Map</a></h1></div>
+<p>
+The memory map shows the type of memory at each address. In a finer scale it also displays the registers and their function at specific addresses. This can be view in the datasheet in the &lt;Peripheral File Map&gt; section.
+</p>
+
+<p>
+Some of the regions displayed are:
+</p>
+<ul>
+<li>
+<a href="Special function registers.html">Special function registers</a>
+
+<li>
+<a href="Peripheral registers with byte or word access.html">Peripheral registers with byte or word access</a>
+
+<li>
+<a href="Random Access Memory.html">Random Access Memory</a>
+
+<li>
+<a href="Bootloader.html">Bootloader</a>
+
+<li>
+<a href="Code Memory.html">Code Memory</a>
+
+<li>
+<a href="Interrupt and Reset Vectors.html">Interrupt and Reset Vectors</a>
+
+</ul>
+
+<div id="Central Processing Unit"><h1 id="Central Processing Unit" class="header"><a href="#Central Processing Unit">Central Processing Unit</a></h1></div>
+<p>
+The purpose of the CPU is to execute the instructions placed in memory until an exception occurs. The maximum CPU frequency is f_MCLK. 
+</p>
+
+<p>
+The CPU also includes:
+</p>
+<ul>
+<li>
+The needed logic to decode the instructions and implement them
+
+<li>
+An arithmetic logic unit ALU to perform computation
+
+<li>
+16 Registers R0-R15:
+
+<ul>
+<li>
+The Registers do not have assigned addresses
+
+<li>
+Each Register can hold a word of 16 bits
+
+<li>
+The first four Registers R0-R3 have designated functions
+
+<li>
+R4-R15 are general purpose Registers
+
+<li>
+When written, either with words or bytes, the lower byte is written to, whereas the upper byte is cleared with zeroes.
+
+</ul>
+</ul>
+
+<p>
+These having that many registers is characteristic for a reduced instruction set computer.  In contrast in complext instruction set registers operation on data must first go through register W and indirect addressing is only restricted to register FSR. Typically these CISC have accumulators registers dedicated for data operations and addressing. For example a CISC could have one register for data and two index registers for addressing whereas the RISC of a MSP430 Chip could serve the same purpose however providing 12 Registers i.e. R4-R15 serving for either data or addressing.
+</p>
+
+<p>
+The CPU mainly relies on the Program Counter PC, Stack Pointer SP and Status Register for information about its computation. 
+</p>
+
+<div id="Central Processing Unit-Register Functions"><h2 id="Register Functions" class="header"><a href="#Central Processing Unit-Register Functions">Register Functions</a></h2></div>
+<ul>
+<li>
+Program Counter PC: The program counter contains the next instruction which is to be executed (points to). These instructions are about 1 - 3 words long. These words must be aligned properly to even addresses. The least significant bit of the PC is hard wired to 0.
+
+<li>
+Stack Pointer SP: The purpose if the SP is to serve as a tracker for the Program Counter. Once a subroutine is called, the CPU jumps to the code where the subroutine is located. In order to keep track of the last PC position, the last word content of the PC is stored in the stack memory. In the case of the MSP430 family the PC content is stored in the high addresses of the main RAM. The Program counter stores the address of that most recent word. Once the PC return, the CPU executes from the address last stored by the SP.
+
+<li>
+Status Register SR: This register gives information about the last arithmetic operation. This register is a collection of single bit flags. 
+
+<li>
+Constant Generator CG: This Register stores the six most recent values. The benefit of having this register is, that the CPU does not have to execute additional fetching operations from memory, it can directly use the values stored in this register.
+
+<li>
+General Purpose Registers R4 - R15: These registers are general purpose registers that can be used either for data or addressing. Each Register can hold a 16 Bit word. hower newer MSP430X Version have been extended to 20 Bits in order to provide and access the increaded number of memory addresses. 
+
+</ul>
+
+<div id="Memory Mapped Input - Output"><h1 id="Memory Mapped Input - Output" class="header"><a href="#Memory Mapped Input - Output">Memory Mapped Input - Output</a></h1></div>
+<ul>
+<li>
+Peripheral Registers: These Registers are implemented using logical devices or packages (also called ports) that are connected with a section of RAM which in turn connects to the outside peripherals, implemented by these logical devices or packages. For the CPU these are nothing but bytes or words in memory that it can write and read to and even apply arithmetic operations on. In order for the package to work, we first have to configure the package by applying changes to the associated bytes or words inside RAM
+
+</ul>
+
+<p>
+Nomenclature: The name peripherals originated when peripheral devices needed a complete different set of equipped in order to function. Since then technology has improved and electronic devices became much smaller, leading to peripherals fitting on the same circuit with the same CPU. Therefore the name peripherals does not really fit anymore, however the nomenclature has stuck until today.
+</p>
+
+<p>
+Some of the most important Registers of Port P1 for example are:
+</p>
+<ul>
+<li>
+Port P1 Input P1IN: This Register is a read only volatile register. Because it is volatile the value inside memory may unpredictably change over time, hence some care is needed when programming.
+
+<li>
+Port P1 Outout P1OUT: Writing to this register sends the value to the external peripheral. If a pin has not been configured as an output pin, the value that has been written to that pin will be stored to a buffer, which later will redirect the value to the external peripheral if the pin has been configured an output
+
+<li>
+Port P1 direction P1DIR: This Register can be used to configure GPIOs as Input or output.
+
+</ul>
+
+<p>
+Further Peripheripherals are:
+</p>
+<ul>
+<li>
+<a href="Timers.html">Timers</a>
+
+<li>
+<a href="Watchdog timer.html">Watchdog timer</a>
+
+<li>
+Communication interfaces: such as I2C, SPI, CAN, Ethernet etc.
+
+<li>
+Non-volatile memory: This can be used i.e. for saving serial numbers for ID or for saving network addresses for example.
+
+<li>
+ADC
+
+<li>
+DAC: This has been less common since most analog signals can be simulated with PWM Signals.
+
+<li>
+RTC: This is essential for applications that need to track the time of day. Dataloggers for example.
+
+<li>
+<a href="Monitor, background debugger, emulator.html">Monitor, background debugger, emulator</a>: This is used to program the MCU
+
+</ul>
+
+<div id="Clock Generator"><h1 id="Clock Generator" class="header"><a href="#Clock Generator">Clock Generator</a></h1></div>
+<p>
+A clock is essential for a synchronous digital system. A clock device generates square wave signals whose edges trigger other devices. Some devices need high frequency clocks signals i.e. the CPU while not needing extremely accurates clocks. Some devices however do need very accurate clock signals, while not needing a high frequency clock. Hence at least two clock signals with very specialized characteristic are often used:
+</p>
+<ul>
+<li>
+fast clock for CPU: can be started or stopped rapidely while while not needing to be particularly accurate
+
+<li>
+slow clock: usually runs continously to monitor real time while needing to be very accurate
+
+</ul>
+
+<p>
+Usually to categories of oscillators are used for clocks:
+</p>
+<ul>
+<li>
+Crystal:
+
+<ul>
+<li>
+These are very accurate and stable
+
+<li>
+Can be used for high frequency to drive main bus or low frequency for RTC
+
+<li>
+The disadvantage is they are very expensive and they draw a relativley high current, additionally they may need extra components such as capasitors.
+
+<li>
+They also need a long time to stablize at least 10^15 clock cycles, however they end up beeing very stable and accurate
+
+</ul>
+<li>
+Resistor and capasitors:
+
+<ul>
+<li>
+They are cheap and very quick, however they have poor stability and accuracy
+
+<li>
+They can be implemented externally but usually are implemented within the MCU
+
+<li>
+They quality of RC oscillators have improves dramatically over the years and now achieve a frequency accuracy within 1%.
+
+</ul>
+</ul>
+
+<p>
+Because of different demands, such as low power, high accuracy and high performance different sources of internal clock signals are often used.
+</p>
+<ul>
+<li>
+Master Clock MCLK: is used by the CPU and few peripherals
+
+<li>
+Subsystem Master Clock SMCLK: is distributed to peripherals
+
+<li>
+Auxiliary Clock ACLK: is also used for distribution to perpherals
+
+</ul>
+
+<p>
+The MCLK and SMCLK usually run at the same frequency within Megahertz range. The ACLK is often derived from an actually clock crystal, hence running at a much slower clock frequency. Most peripherals can select either the SMCLK or ACLK as input clock source. 
+</p>
+
+<p>
+For most of MSP430 Chips:
+</p>
+<ul>
+<li>
+ACLK is derived from a crystal with lower frequency of 32KHz. No crystal usually mean no ACLK.
+
+<li>
+SMCLK and MCLK ru using a RC oscillator or internal digitally controlled oscillator DCO. A great benefit of DCO is its rapidely fast speed, taking less then 1us to stabilize. 
+
+</ul>
+
+<div id="Exceptions: Interrupts and Resets"><h1 id="Exceptions: Interrupts and Resets" class="header"><a href="#Exceptions: Interrupts and Resets">Exceptions: Interrupts and Resets</a></h1></div>
+<ul>
+<li>
+Interrupt: Its usually triggered by hardware which indicates an urgent response is needed. The processor stops and stores the content of the Program Counter and status register and executes the ISR. A typical use of an interrupt is to wake the MCU from a low power state.
+
+<li>
+Reset: This is also usually triggered by hardware. This exception is triggered when a catastrophic event has occured and normal mode cant be continued. This could happen by a watchdog module if it hasn't been disabled before. A reset causes a restart from a well defined state. 
+
+</ul>
+
+<p>
+The CPU must be told which address to continue if an interrupt or reset has been triggered. These addresses which are entered upon such a signal are called vectors. Once approach is to have one vector for interrupt and one vector for reset. The problem with this approach is that, the source of the exception trigger is unknown. 
+</p>
+
+<p>
+MSP430 Family used a different approach in which each Interrupt service routine have its own interrupt vector, also called vectored interrupts. These Vectors are predefined in the vector table, which are located in the end of program memory.
+</p>
+
+</body>
+</html>

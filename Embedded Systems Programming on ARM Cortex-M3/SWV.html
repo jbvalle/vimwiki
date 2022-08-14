@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../style.css">
+<title>SWV</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="SWV"><h1 id="SWV" class="header"><a href="#SWV">SWV</a></h1></div>
+
+<ul>
+<li>
+Is only applicable for ARM CORTEX M3/M4/M7
+
+</ul>
+
+<div id="SWV-Printf Application"><h2 id="Printf Application" class="header"><a href="#SWV-Printf Application">Printf Application</a></h2></div>
+<ul>
+<li>
+Using printf is achieved by accessing the Serial Wire Output SWO Pin - which is interfaced by SWD - Serial Wire Debugger
+
+</ul>
+
+<div id="SWV-ITM Unit"><h2 id="ITM Unit" class="header"><a href="#SWV-ITM Unit">ITM Unit</a></h2></div>
+<ul>
+<li>
+Intrumentation Trace Macrocell Unit
+
+<li>
+Its an optional applciation driven trace source which supports printf style debugging to trace OS and Application event -&gt; and it generates diagnostic system information
+
+</ul>
+
+<div id="SWV-Serial Wire Debug SWD"><h2 id="Serial Wire Debug SWD" class="header"><a href="#SWV-Serial Wire Debug SWD">Serial Wire Debug SWD</a></h2></div>
+<ul>
+<li>
+Its a two wire protocoll for accessing the ARM Debug Interface:
+
+<ul>
+<li>
+2 Pins (debug)
+
+<li>
+1 Pin (Trace)
+
+</ul>
+<li>
+Alternative to JTAG:
+
+<ul>
+<li>
+SWD is an alternative to JTAG which is part of the v5 Specification
+
+</ul>
+<li>
+Hardware Composition:
+
+<ul>
+<li>
+SWDIO : bidirectional dataline
+
+<li>
+SWCLK : Clock driven by the host
+
+</ul>
+<li>
+Functionality:
+
+<ul>
+<li>
+by accessing SWD interface the MCU internal flash can be programmed
+
+<li>
+memory regions can be accessed
+
+<li>
+breakpoints can be accessed
+
+<li>
+CPU can be run and stopped
+
+<li>
+can be used for printf debugging
+
+</ul>
+</ul>
+
+</body>
+</html>

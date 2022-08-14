@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>loopback_interface</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+The loopback interface is a virtual software interface that is used to identify the device. It contains an address that never changes and or is removed due to network changes. Any data that is send using the loopback interface is sent back to the device. 
+</p>
+
+<p>
+In order to check if an interface is available, sending a pink can often be misleading. Just because a ping hasn't arrived does not necesserally mean the interface is inoperable. It could due to a network specific reason unrelated to the device's configuration or oepration.
+</p>
+
+<p>
+Benefits of Loopback interface:
+</p>
+<ul>
+<li>
+The loopback address never changes, thats why it's the best way to identify a device in the network
+
+<li>
+Its always up as long as the route to that ip address is available in the ip routing table, hence ideal for diagnostics and troubleshooting
+
+<li>
+Some protocol depened on the loopback address to determine properties of the device.
+
+</ul>
+
+</body>
+</html>

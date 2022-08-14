@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Information-Maintenance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+Here Information exchange is handled between the OS and a user program. An OS keeps its information about all its processes. Thats why systemcalls are performed to fetch data about the running processes. The executed systemcalls are getpid(), alarm(), sleep().
+</p>
+
+<ul>
+<li>
+getpid():
+
+<ul>
+<li>
+This systemcall instructs to return the process ID of the process which is sending the syscall
+
+<li>
+This function shall always be succesful and return no errors
+
+</ul>
+<li>
+alarm():
+
+<ul>
+<li>
+This function arranges for a signal to be delivered to the calling process and when the delivery shall be recieved
+
+</ul>
+<li>
+sleep():
+
+<ul>
+<li>
+This call suspends the execution of the currently running process for a set interval of time. Meanwhile another process can be executed
+
+</ul>
+</ul>
+
+</body>
+</html>

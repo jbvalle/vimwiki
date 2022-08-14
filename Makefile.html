@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Makefile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<pre Makefile>
+# Add module name to obj-module variable
+obj-m += mymodule.o
+
+all:
+    #Execute Module in the location of kernel/build and output file to current directory and execute module target from Makefile
+    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean: 
+    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+</pre>
+
+</body>
+</html>

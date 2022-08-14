@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Monitor, background debugger, emulator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Access to MCU for programming and debugging"><h1 id="Access to MCU for programming and debugging" class="header"><a href="#Access to MCU for programming and debugging">Access to MCU for programming and debugging</a></h1></div>
+
+<p>
+In order to communicate with the MCU for programming and debbuging with need a two way communication protocol to send data for programming and recieve data for debugging.
+</p>
+
+<p>
+Three common interfaces for MCUs are:
+</p>
+<ul>
+<li>
+Bootstrap bootloader (BSL): Serial interface. The BSL needs only a level shifter for connection with RS232 ports. However this interface could only be used for programming and not debugging, as debugging was mostly done by serial monitors. The BSL was permanently stored in masked ROM and was executed instead of the user program, when specific debugging pins of the MCU were signaled and the MCU was reset. The big disadvantage of this interface is that it is very intrucive as the user's program had to com halt completely in order for the debugger to take control. 
+
+<li>
+<a href="Conventional JTAG (four wires).html">Conventional JTAG (four wires)</a>
+
+<li>
+Spy-Bi-Wire JTAG (two Wire)
+
+</ul>
+
+</body>
+</html>

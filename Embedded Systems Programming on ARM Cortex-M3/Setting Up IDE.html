@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../style.css">
+<title>Setting Up IDE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Setting Up IDE"><h1 id="Setting Up IDE" class="header"><a href="#Setting Up IDE">Setting Up IDE</a></h1></div>
+
+<ol>
+<li>
+New STM32 Project
+
+</ol>
+
+
+<div id="Setting Up IDE-Compilation"><h2 id="Compilation" class="header"><a href="#Setting Up IDE-Compilation">Compilation</a></h2></div>
+<ol>
+<li>
+Right Click Parent Directory -&gt; Build Project
+
+</ol>
+
+<div id="Setting Up IDE-Compilation-Remove FPU Warning"><h3 id="Remove FPU Warning" class="header"><a href="#Setting Up IDE-Compilation-Remove FPU Warning">Remove FPU Warning</a></h3></div>
+<ul>
+<li>
+FPU : Floating Point Unit
+
+<li>
+The FPU has to be disabled to remove the warning:
+
+<ul>
+<li>
+Right click Parent Directory -&gt; Properties: C/C++ Build -&gt; Setting -&gt; Tool Settings -&gt; MCU Settings: Floating-point unit: -&gt; Set to none | Floating Point ABI -&gt; set to SW implementation
+
+</ul>
+</ul>
+
+<div id="Setting Up IDE-Compilation-Flashing Code unto the Target"><h3 id="Flashing Code unto the Target" class="header"><a href="#Setting Up IDE-Compilation-Flashing Code unto the Target">Flashing Code unto the Target</a></h3></div>
+<ul>
+<li>
+Board is put into Debug mode -&gt; Configure Debug Mode first:
+
+<ul>
+<li>
+Debug as -&gt; Debugger -&gt; Debug probe: STM-Link(ST-LINK GDB Server) | Interface : SWD | SWV : Enable
+
+</ul>
+<li>
+Right Click Parent Directory -&gt; Debug as -&gt; STM32 Cortex-m C/C++ Application
+
+</ul>
+
+</body>
+</html>

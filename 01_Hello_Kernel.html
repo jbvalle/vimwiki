@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>01_Hello_Kernel</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<ul>
+<li>
+Create following files:
+
+</ul>
+    
+<ul>
+<li>
+File: <a href="mymodule.html">mymodule</a> =
+
+<li>
+File: <a href="Makefile.html">Makefile</a> = 
+
+</ul>
+
+<ul>
+<li>
+Execute the Makefile
+
+</ul>
+<blockquote>
+$ make
+</blockquote>
+    
+<ul>
+<li>
+By now the kernel object file should have been created, now load the module to the kernel:
+
+</ul>
+<blockquote>
+$ sudo insmod mymodule.ko
+</blockquote>
+    
+<ul>
+<li>
+Inspect the modules with:
+
+</ul>
+<blockquote>
+$ lsmod | grep mymodule
+</blockquote>
+
+<ul>
+<li>
+Now check for the kernel log with:
+
+</ul>
+<blockquote>
+$ dmesg | tail -5
+</blockquote>
+    
+<ul>
+<li>
+Now remove the module with:
+
+</ul>
+<blockquote>
+$ sudo rm mymodule
+</blockquote>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Preprocessor_directives</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Preprocessor Directives"><h1 id="Preprocessor Directives" class="header"><a href="#Preprocessor Directives">Preprocessor Directives</a></h1></div>
+<p>
+In Generell a macro always start with a '#'. Those macros are only meaningful for the preprocessor, allowing code to be prepared before it is passed to the compiler. A code which has first been preprocessed before it has been compiled is called a translation unit or compilation unit. Though these macros are only meaningful to the preprocessor, newer gcc compilers do understand the expressions. This is can come handy when debugging a program, as the compiler may already hint a possible error in those macros. Defining a macro is called expanding the macro.
+</p>
+
+<div id="Preprocessor Directives-Macros"><h2 id="Macros" class="header"><a href="#Preprocessor Directives-Macros">Macros</a></h2></div>
+
+<p>
+Applications:
+</p>
+<ul>
+<li>
+Defining constants
+
+<li>
+Using as a function
+
+<li>
+Loop unrolling
+
+<li>
+Header guards
+
+<li>
+Code generation
+
+<li>
+Condito Compilation
+
+</ul>
+
+<div id="Preprocessor Directives-Domain Specific Language"><h2 id="Domain Specific Language" class="header"><a href="#Preprocessor Directives-Domain Specific Language">Domain Specific Language</a></h2></div>
+<p>
+Macros make it possible to write DSL, which can very useful. For example:
+</p>
+<pre C>
+#include &lt;stdio.h&gt;
+#define PRINT(VALUE) printf("%d", VALUE);
+#define LOOP_START(START,STEPS,END) for(int i = START; i &lt;= END; i=i+STEPS){
+#define LOOP_END 
+}
+
+int main(void){
+
+    int a = 20;
+    PRINT(a)
+    LOOP_START(0,2,10)
+    LOOP_END
+                    
+    return 0;
+                        
+}
+
+</pre>
+
+<p>
+The macro definitions such as PRINT , LOOP_START, LOOP_END make no sense as a C syntax but ones it has been preprocessed it becomes a valid C Code. 
+Examples for such Domain specific lanuguage are testing frameworks such as google Test where DSL is used to write, assertions, expectations and test scenarios.
+</p>
+
+<div id="Preprocessor Directives-Commands: '#' '##'"><h2 id="Commands: '#' '##'" class="header"><a href="#Preprocessor Directives-Commands: '#' '##'">Commands: '#' '##'</a></h2></div>
+<ul>
+<li>
+The '#' within a function means to convert the macro into its string for surrounded by quotation marks
+
+<li>
+The '##' within a function means to concatenate 
+
+</ul>
+
+<div id="Preprocessor Directives-Variadic macros"><h2 id="Variadic macros" class="header"><a href="#Preprocessor Directives-Variadic macros">Variadic macros</a></h2></div>
+<table>
+<tr>
+<td>
+__VA_ARGS__
+</td>
+<td>
+indicator that tells preprocessor to replace with all remaining input arguments that are not asigned to any parameter
+</td>
+</tr>
+</table>
+
+<p>
+Special case with __VA_ARGS__ if it has not been places it output an error to go past that error you could write 
+</p>
+<pre C>
+#define LOG_ERR(format, ...) fprintf(stderr, format, ##__VA_ARGS__)
+</pre>
+
+<p>
+or
+</p>
+
+<pre C>
+#define LOG_ERR(format, ...) fprintf(stderr, format __VA_OPT__(,) __VA_ARGS__)
+</pre>
+
+<p>
+if the __VA_OPT__ token is set then it expands to a comma and __VA_ARGS__ is set otherwise __VA_OPT__ and anything after that is removed. This feature has been introduced with C++20. Using ## has been kept in order to stay backwards compatible with older versions.
+</p>
+
+<div id="Preprocessor Directives-Variadic macros-Loops with macros"><h3 id="Loops with macros" class="header"><a href="#Preprocessor Directives-Variadic macros-Loops with macros">Loops with macros</a></h3></div>
+
+<p>
+Writing a loop like macro function is possible. The difference between a real loop, is that the command it just placed multiple times by the preprocessor. This technique is called loop unrolling, although this method creates a bigger binary its performance is better than that of the regular loop.
+</p>
+
+<div id="Preprocessor Directives-Advantages and disadvantages of macros"><h2 id="Advantages and disadvantages of macros" class="header"><a href="#Preprocessor Directives-Advantages and disadvantages of macros">Advantages and disadvantages of macros</a></h2></div>
+<ul>
+<li>
+Regarding debugging, programmers you compiler warning that help find errors, now in combination with an old compiler this could lead to issues. Fortunately, compiler have become much better and understand much more about the preprocessor process. So in near future this problem can be overcome.
+
+<li>
+As mentioned before macros used as unrolled loops come with a trade-off, better performance for a larger binary
+
+<li>
+As for software design it's generally considered best practise, the bigger you code base the more modular and smaller binaries should be. Using macros can be implemented beautifully but are when exaggerated a flat linear piece of code, thereby contradicting modular hiarchical good practise coding conventions. 
+
+<li>
+As for better performance for a bigger binary, one could argue that better performance start with better algorithms, therefore optimization priorities should lay in the software mechanism and functionality itself, therefore the trade-off for a slightly better performance, is not satisfying enough for the sacrifice made.
+
+</ul>
+
+<div id="Preprocessor Directives-General Optimization Paradox"><h2 id="General Optimization Paradox" class="header"><a href="#Preprocessor Directives-General Optimization Paradox">General Optimization Paradox</a></h2></div>
+<p>
+In order to make thinks faster, more efficient, more powerful the cpu requires a linear already preprocesses approach, which doesn't require alot of jumping around inside the code. Whereas, good software design is rather non-linear hierarchical and therefore contradicting eachothers' philosophies. Because of that, those aspects have to be wheighted out for every project.
+</p>
+
+
+<div id="Preprocessor Directives-Conditional Compilation"><h2 id="Conditional Compilation" class="header"><a href="#Preprocessor Directives-Conditional Compilation">Conditional Compilation</a></h2></div>
+<p>
+This is a C feature often used in C++ Code. Its a method to that allows passing different preprocessed source code to the compiler depending on macros.
+</p>
+
+<p>
+List of directive for conditional compilation:
+</p>
+<ul>
+<li>
+#ifdef
+
+<li>
+#ifndef
+
+<li>
+#else
+
+<li>
+#elif
+
+<li>
+#endif
+
+</ul>
+
+</body>
+</html>

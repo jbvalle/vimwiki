@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>File-Management</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+This Systemcall tells the kernel to create, read and write to a file (open, read,write, close):
+</p>
+<ul>
+<li>
+open():
+
+<ul>
+<li>
+This Systemcall, call instructs to open a file in order to perform operations such as reading and writing
+
+</ul>
+<li>
+read():
+
+<ul>
+<li>
+This Systemcall instructs to open a file in reading mode
+
+<li>
+This Call can be executed by multiple processes on the same time for the same file.
+
+</ul>
+<li>
+write():
+
+<ul>
+<li>
+Open a file in writing mode
+
+<li>
+This systemcall make it possible to write to a file
+
+<li>
+Multiple Processes can NOT execute write() on the same file simltaneously
+
+</ul>
+<li>
+close():
+
+<ul>
+<li>
+Closes the opened file
+
+</ul>
+</ul>
+
+</body>
+</html>

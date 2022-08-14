@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Simple_IO_Program</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="IO Configuration for MSP430"><h1 id="IO Configuration for MSP430" class="header"><a href="#IO Configuration for MSP430">IO Configuration for MSP430</a></h1></div>
+<ul>
+<li>
+Each Port of the MSP430 Family can have up to 12 IO Pins P1 to P11 and PJ
+
+<li>
+Interrupt capability is available on:
+
+<ul>
+<li>
+P1 Port: each IO line can be enabled and configured to provide interrupt capability on rising or falling edge of an input signal, P1 IO Lines source to a single interrupt vecotr P1IV
+
+<li>
+P2 Port: can also be enabled and configured to provide interrupt capability. P2 IO lines each source a different single interrupt vector P2IV.
+
+</ul>
+</ul>
+    
+<div id="IO Configuration for MSP430-Installations"><h2 id="Installations" class="header"><a href="#IO Configuration for MSP430-Installations">Installations</a></h2></div>
+<ul>
+<li>
+Install Mitto Systems GCC Toolchain from MSP430-gcc-opensource from ti.com:
+
+<ul>
+<li>
+www.ti.com/tool/MSP430-GCC-OPENSOURCE#downloads
+
+</ul>
+<li>
+Install header and support files from same website
+
+<li>
+
+
+</ul>
+<div id="IO Configuration for MSP430-Operating Modes"><h2 id="Operating Modes" class="header"><a href="#IO Configuration for MSP430-Operating Modes">Operating Modes</a></h2></div>
+<p>
+The MSP430 Family was designed for low power applications, hence different mode where designed to fit individual needs:
+</p>
+
+<p>
+The different modes take following aspects into consideration:
+</p>
+<ul>
+<li>
+Low Power
+
+<li>
+Speed and data thoughput
+
+<li>
+Minimizing current consumption of individual peripherals
+
+</ul>
+
+
+
+<div id="IO Configuration for MSP430-Naming convention"><h2 id="Naming convention" class="header"><a href="#IO Configuration for MSP430-Naming convention">Naming convention</a></h2></div>
+<p>
+Port Pairs such as P1 and P2, P3 and P4, P5 and P6 etc are associated with the names PA, PB, PC, etc. IO lines can be individually accessed, however byte-wide port access is possible with this naming convention. This naming convention however does not apply on interrupt vector registers i.e. P1IV and P2IV cannot be accessed with PAIV as this does not exist.
+</p>
+
+<div id="IO Configuration for MSP430-Writing to GPIO"><h2 id="Writing to GPIO" class="header"><a href="#IO Configuration for MSP430-Writing to GPIO">Writing to GPIO</a></h2></div>
+<ul>
+<li>
+When Writing only to lower byte the upper byte remains unchanged, similarly with writing to upper bytes.
+
+<li>
+When Ports have fewer than the maximum number bits, and these bits gets written to, no effect is taking place as these are don't care bits.
+
+</ul>
+
+<div id="IO Configuration for MSP430-GPIO Configuration"><h2 id="GPIO Configuration" class="header"><a href="#IO Configuration for MSP430-GPIO Configuration">GPIO Configuration</a></h2></div>
+<ul>
+<li>
+PMM:
+
+<ul>
+<li>
+As the MSP430 was designed for controlled low power application a PMM Power Management Module ensures that IO Pins behave in uncontrolled low power event. During these Times the PMM disables all output. This is why PMM Registers have to set be set to unable output use of IO Pins.
+
+<li>
+PMM Registers can only be accessed with the defined password in PMMCTL0, except PM5CTL0 which does not require a passwort. In order to enable output the first bit LOCKLPM5 from PM5CTL0 has to be set to 0 to unlock -&gt; 1 is means output is locked.
+
+</ul>
+</ul>
+ 
+<ul>
+<li>
+Watchdog Timer:
+
+<ul>
+<li>
+Its primary function is to perform a controlled system restart incase a software problem occurs
+
+<li>
+In Case a selected time interval expires the Watchdog time module will initiate a system reset
+
+<li>
+In case the WDT Module is not needed it can be configured to generate interrupts at selcted time intervals
+
+<li>
+The WDT Module is password protected:
+
+<ul>
+<li>
+To Write: 05Ah must be written to Upper Byte
+
+<li>
+To Read: 069h must be written to upper Byte
+
+</ul>
+<li>
+In case the Watchdog timer is not used the WDT can be stopped using WDTHOLD = 1 | 0 would be enabled. Stopping the WDT Module when not in use conserves Power. If the Watchdog timer is not disabled within the first 32ms of watchdog mode initialization the reset signal PUC will be sent.
+
+</ul>
+</ul>
+
+<ol>
+<li>
+Ports have to be initialized first:
+
+<ol>
+<li>
+PxDIR 
+
+<li>
+PxREN
+
+<li>
+PxOUT
+
+<li>
+PxIES
+
+</ol>
+<li>
+Clear LOCKLPM5
+
+<li>
+If not waking up from LPMx.5: clear all PxIFGs to avoid erroneous port interrupts
+
+<li>
+Enable Port interrs in PxIE
+
+</ol>
+
+</body>
+</html>

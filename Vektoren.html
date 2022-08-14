@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Vektoren</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Vektoren"><h1 id="Vektoren" class="header"><a href="#Vektoren">Vektoren</a></h1></div>
+
+<div id="Vektoren-Terminologien"><h2 id="Terminologien" class="header"><a href="#Vektoren-Terminologien">Terminologien</a></h2></div>
+<ul>
+<li>
+Man betrachtet n-Tupel Vektoren, n ist die anzahl an Komponenten des Vektors
+
+<li>
+Ein Ortsvektor ist ein Vektor ausgehend vom Urpsung O.
+
+</ul>
+
+<div id="Vektoren-Operationen"><h2 id="Operationen" class="header"><a href="#Vektoren-Operationen">Operationen</a></h2></div>
+
+<div id="Vektoren-Operationen-Addition"><h3 id="Addition" class="header"><a href="#Vektoren-Operationen-Addition">Addition</a></h3></div>
+<p>
+Vorraussetzung für die Vektoraddition:
+v1 + v2 | rank(v1) = rank(v2)
+</p>
+
+<p>
+v1 + v2 = (v1(1) + v1(2) + ... + v1(n)) + (v2(1) + v2(2) + ... + v2(n))
+</p>
+
+<div id="Vektoren-Operationen-Skalar Multiplikation"><h3 id="Skalar Multiplikation" class="header"><a href="#Vektoren-Operationen-Skalar Multiplikation">Skalar Multiplikation</a></h3></div>
+<p>
+k * v | k element R , v element R^n 
+k * v = k * (v1,v2,...,vn)
+</p>
+
+<div id="Vektoren-Vektoreigenschaften im Vectorraum"><h2 id="Vektoreigenschaften im Vectorraum" class="header"><a href="#Vektoren-Vektoreigenschaften im Vectorraum">Vektoreigenschaften im Vectorraum</a></h2></div>
+
+<div id="Vektoren-Vektoreigenschaften im Vectorraum-Nullvektor"><h3 id="Nullvektor" class="header"><a href="#Vektoren-Vektoreigenschaften im Vectorraum-Nullvektor">Nullvektor</a></h3></div>
+<p>
+0 = [0,...,n-mal]
+</p>
+
+<div id="Vektoren-Vektoreigenschaften im Vectorraum-Vektoren Gleichheit"><h3 id="Vektoren Gleichheit" class="header"><a href="#Vektoren-Vektoreigenschaften im Vectorraum-Vektoren Gleichheit">Vektoren Gleichheit</a></h3></div>
+<p>
+v1, v2 element R^n 
+v1 = v2 | wenn v1 und v2 komponentenweise gleich sind.
+</p>
+
+<div id="Vektoren-Vektoreigenschaften im Vectorraum-Abstand zwischen zwei Punkten A , B"><h3 id="Abstand zwischen zwei Punkten A , B" class="header"><a href="#Vektoren-Vektoreigenschaften im Vectorraum-Abstand zwischen zwei Punkten A , B">Abstand zwischen zwei Punkten A , B</a></h3></div>
+<p>
+vector(A-to-B) = [B(1) - A(1), B(2) - A(2)] = [Bx - Ax; By - Ay, ...]
+</p>
+
+<div id="Vektoren-Vektoreigenschaften im Vectorraum-Norm eines Vektors"><h3 id="Norm eines Vektors" class="header"><a href="#Vektoren-Vektoreigenschaften im Vectorraum-Norm eines Vektors">Norm eines Vektors</a></h3></div>
+<ul>
+<li>
+Für a element R^n
+
+</ul>
+<p>
+||a|| = sqrt(a(1)² + a(2)² + a(3)² + ... );
+</p>
+
+<ul>
+<li>
+Für a element C^n
+
+</ul>
+<p>
+||a|| = sqrt(sum(|a_j|²) mit |a_j|² = a_j * compl.conjug(a_j)
+-&gt; Für komplexe zahlen wird der Betrag genommen, da das Quadrat immer noch eine negative Zahl ergeben könnte, für die Länge aber ein positive Betrag nur sinnvoll ist.
+</p>
+
+<ul>
+<li>
+Definition des Längenbegriffs/Norm eines Vektors im R<sup><small>n oder C</small></sup>n 
+  Sei V element R<sup><small>n oder C</small></sup>n mit einer Funktion || || : V -&gt; [0,infinity)
+
+<ol>
+<li>
+|| a || &gt; 0 , mit a != 0 Positivität
+
+<li>
+||k * a|| = |k| * ||a|| Homogenität
+
+<li>
+||a + b|| &lt;= ||a|| + ||b|| Dreieckungleichung
+
+</ol>
+</ul>
+
+<p>
+mit a,b element V und k element R<sup><small>n oder C</small></sup>n -&gt; normierter Raum
+</p>
+
+</body>
+</html>

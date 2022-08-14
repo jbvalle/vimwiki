@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>C for Programming</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="C for programming"><h1 id="C for programming" class="header"><a href="#C for programming">C for programming</a></h1></div>
+
+<div id="C for programming-Declaration"><h2 id="Declaration" class="header"><a href="#C for programming-Declaration">Declaration</a></h2></div>
+
+<p>
+The keywords const and volatile are often use to define special function registers. 
+</p>
+
+<ul>
+<li>
+const: This keyword means that the value is constant and therefore should not be modified by the compiler
+
+<li>
+volatile: This means that the value may change spontaneously with no direct action by the user program. This also tells the compiler not to keep a copy of the value in a CPU Register like cache for better efficiency. Nor shouldn't the compiler assume that the value remains constant. The compiler may rearrange loops for example, and may optimize the code in a way that externally induced changes may be missed. 
+
+</ul>
+  
+  
+<div id="C for programming-Shifts"><h2 id="Shifts" class="header"><a href="#C for programming-Shifts">Shifts</a></h2></div>
+<p>
+Shifts are most commonly used for communication. Shifts are usually used for serially read data, in which a shift register would be used. This can also be implemented using software. Espression like value &lt;&lt;= 1 would shift the bytes by one position to the left, this would be equivelent with multiplying by 2.
+</p>
+
+
+<div id="C for programming-Low Level logic operations"><h2 id="Low Level logic operations" class="header"><a href="#C for programming-Low Level logic operations">Low Level logic operations</a></h2></div>
+<p>
+Its important to distinguish between boolean operations and bitwise operation:
+</p>
+<ul>
+<li>
+A &amp;&amp; B would mean that the &amp;&amp; operator would treat A and B as single boolean values, hence A or B beeing either 0 or 1
+
+<li>
+A &amp; B however would be a bitwise operator in which &amp; would AND all bits individually.
+
+</ul>
+
+<div id="C for programming-Using MASKS for testing individual bits"><h2 id="Using MASKS for testing individual bits" class="header"><a href="#C for programming-Using MASKS for testing individual bits">Using MASKS for testing individual bits</a></h2></div>
+<p>
+In general a mask is a byte pattern used to select bits.
+</p>
+
+<p>
+A simple demonstration for a mask is for checking if a input pin is HIGH.
+</p>
+
+<p>
+Lets assume: 
+uint8_t PTEST = 0b0000 0000
+uint8_t P1IN = 0b0000 X000
+uint8_t MASK_P3 = 0x0000 1000
+</p>
+
+
+<p>
+PTEST = P1IN &amp; MASK_P3 //if P1IN at Bit 3 is 1 -&gt; using the &amp; operator would mean that PTEST would be non-zero 
+</p>
+
+
+<p>
+if((P1IN &amp; MASK_P3)==0) //if true than P1IN at BIT3 was 0
+if((P1IN &amp; MASK_P3)!=0) //if true than P1IN at BIT3 was 1 
+</p>
+
+
+<div id="C for programming-Using Masks for setting individual bits"><h2 id="Using Masks for setting individual bits" class="header"><a href="#C for programming-Using Masks for setting individual bits">Using Masks for setting individual bits</a></h2></div>
+
+<div id="C for programming-Using Masks for setting individual bits-Setting Bits"><h3 id="Setting Bits" class="header"><a href="#C for programming-Using Masks for setting individual bits-Setting Bits">Setting Bits</a></h3></div>
+<p>
+uint8_t BIT3 = 0b0000 1000;
+</p>
+
+<p>
+uint8_t P1OUT = 0b0000 0000;
+</p>
+
+<p>
+P1OUT |= BIT3; //P1OUT = 0b0000 1000
+</p>
+
+<div id="C for programming-Using Masks for setting individual bits-Unsetting Bits"><h3 id="Unsetting Bits" class="header"><a href="#C for programming-Using Masks for setting individual bits-Unsetting Bits">Unsetting Bits</a></h3></div>
+<p>
+uint8_t BIT3 = 0b0000 1000;
+</p>
+
+<p>
+uint8_t P1OUT = 0b1111 1111;
+</p>
+
+<p>
+P1OUT &amp;= ~BIT3; //P1OUT = 0b1111 0111
+</p>
+
+<div id="C for programming-Using Masks for setting individual bits-Toggling Bits"><h3 id="Toggling Bits" class="header"><a href="#C for programming-Using Masks for setting individual bits-Toggling Bits">Toggling Bits</a></h3></div>
+<p>
+uint8_t BIT3 = 0b0000 1000;
+</p>
+
+<p>
+uint8_t P1OUT = 0b1111 1111;
+</p>
+
+<p>
+P1OUT ^= BIT3; //P1OUT = 0b1111 0111 -&gt; Xoring with 1 results in a toggle and Xoring with 0 means no change
+</p>
+
+<div id="C for programming-Bit Fields"><h2 id="Bit Fields" class="header"><a href="#C for programming-Bit Fields">Bit Fields</a></h2></div>
+<p>
+Using Masks can be unsafe as there is no set standard for the sequence of bits, meaning are are the upper bytes the MSB or LSB? This depends completely on the compiler. Because of that, it's recommended to used bit fields to manipulate individual bits. 
+</p>
+
+<p>
+An example is given for programming PORT1 of the MSP430FR4133 Chip:
+</p>
+
+<p>
+#include "msp430fr4133.h"
+#include &lt;stdint.h&gt;
+//Define a second at 1MHz
+#define BLINK_CYCLES 500000L
+</p>
+
+<p>
+typedef struct {
+</p>
+<blockquote>
+unsigned short bit_0 : 1;
+unsigned short bit_1 : 1;
+unsigned short bit_2 : 1;
+unsigned short bit_3 : 1;
+unsigned short bit_4 : 1;
+unsigned short bit_5 : 1;
+unsigned short bit_6 : 1;
+unsigned short bit_7 : 1;
+</blockquote>
+
+<p>
+}reg8_t;
+</p>
+
+<p>
+typedef volatile union{
+</p>
+<blockquote>
+uint8_t all;
+reg8_t bit;
+</blockquote>
+
+
+<p>
+}PORT1_t;
+</p>
+
+<p>
+int main(void){
+</p>
+<blockquote>
+PORT1_t * const PORT1 = (PORT1_t *) 0x0202;
+</blockquote>
+<blockquote>
+//Stop the WDT Module 
+WDTCTL = WDTPW |WDTHOLD;
+</blockquote>
+<blockquote>
+//Enable Output from PMM
+PM5CTL0 &amp;= ~LOCKLPM5;
+</blockquote>
+<blockquote>
+//Set Pin 1.0 as output
+P1DIR |= 0xFF;
+</blockquote>
+<blockquote>
+while(1){
+PORT1-&gt;all = 0x00;
+PORT1-&gt;bit.bit_2 = 1;
+</blockquote>
+<blockquote>
+for(int i = 0; i &lt; 5; i++){
+PORT1-&gt;all &lt;&lt;= 1;
+__delay_cycles(BLINK_CYCLES);
+</blockquote>
+<blockquote>
+}
+</blockquote>
+<blockquote>
+}
+</blockquote>
+<blockquote>
+return 0;
+</blockquote>
+
+<p>
+}
+</p>
+
+</body>
+</html>

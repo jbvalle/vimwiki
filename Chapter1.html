@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Chapter1</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="What will you learn from studying Kernel Developement?"><h1 id="What will you learn from studying Kernel Developement?" class="header"><a href="#What will you learn from studying Kernel Developement?">What will you learn from studying Kernel Developement?</a></h1></div>
+
+<ul>
+<li>
+The Linux Device Model Framework
+
+<li>
+User-kernel Interfaces
+
+<li>
+I/O Handling
+
+<li>
+Interrupt Handl
+
+<li>
+Concurrency
+
+<li>
+Understanding Kernal Internals 
+
+<li>
+Understanding APIs
+
+<li>
+Develope Kernel Modules
+
+</ul>
+
+<div id="Kernel Workspace SetUp"><h1 id="Kernel Workspace SetUp" class="header"><a href="#Kernel Workspace SetUp">Kernel Workspace SetUp</a></h1></div>
+
+<div id="Kernel Workspace SetUp-Requirements:"><h2 id="Requirements:" class="header"><a href="#Kernel Workspace SetUp-Requirements:">Requirements:</a></h2></div>
+<ul>
+<li>
+Preferably using VM as testing ground.
+
+<li>
+x86 System virtualiuation extension support
+
+<ul>
+<li>
+Linux: Run:
+
+<ul>
+<li>
+```<code>egrep --color "vmx|svm" /proc/cpuinfo</code>``` : 
+          vmx, checks for intel processor 
+          svm, checks for AMD processor
+
+<li>
+
+
+</ul>
+</ul>
+<li>
+Installations:
+
+<ul>
+<li>
+Packages:
+
+<ul>
+<li>
+build-essentials
+
+<li>
+dkms ... Dynamic Kernel Module Support: Allows kernel modules to be modified without needing to modify the whole kernel
+
+<li>
+linux-headers-$(uname -r) ... linux kernel headers
+
+<li>
+linux-tools-$(uname -r) 
+
+<li>
+gcc
+
+<li>
+make
+
+<li>
+perl
+
+<li>
+git
+
+<li>
+fakeroot
+
+<li>
+tar
+
+<li>
+ncurses-dev
+
+<li>
+tar
+
+<li>
+xz-utils
+
+<li>
+libssl-dev 
+
+<li>
+bc
+
+<li>
+stress
+
+<li>
+python3-distutils
+
+<li>
+libelf-dev
+
+<li>
+bison
+
+<li>
+flex
+
+<li>
+libncurses5-dev
+
+<li>
+util-kinux
+
+<li>
+net-tools
+
+<li>
+exuberant-ctags 
+
+<li>
+cscope
+
+<li>
+sysfsutils
+
+<li>
+gnome-system-monitor
+
+<li>
+curl
+
+<li>
+perf-tools-unstable
+
+<li>
+gnuplot
+
+<li>
+rt-tests
+
+<li>
+indent
+
+<li>
+tree
+
+<li>
+pstree
+
+<li>
+smem
+
+<li>
+libnuma-dev
+
+<li>
+numactl
+
+<li>
+hwloc
+
+<li>
+bpfxx-tools
+
+<li>
+sparse
+
+<li>
+flawfinder
+
+<li>
+cppcheck
+
+<li>
+tuna
+
+<li>
+hexfump
+
+<li>
+openjdk-14-jre
+
+<li>
+trace-cmd
+
+<li>
+virt-what
+
+</ul>
+</ul>
+</ul>
+        
+        
+<ul>
+<li>
+Installation of Cross Compiler:
+
+</ul>
+        
+<ul>
+<li>
+qemu-system-arm ... Toolchain
+
+<li>
+crossbuild-essential-armhf ... actual crosscompiler pkg
+
+</ul>
+
+</body>
+</html>
