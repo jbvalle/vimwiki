@@ -31,6 +31,9 @@ Intrumentation Trace Macrocell Unit
 <li>
 Its an optional applciation driven trace source which supports printf style debugging to trace OS and Application event -&gt; and it generates diagnostic system information
 
+<li>
+<a href="ITM - Functionality.html">ITM - Functionality</a>
+
 </ul>
 
 <div id="SWV-Serial Wire Debug SWD"><h2 id="Serial Wire Debug SWD" class="header"><a href="#SWV-Serial Wire Debug SWD">Serial Wire Debug SWD</a></h2></div>
@@ -86,6 +89,62 @@ can be used for printf debugging
 
 </ul>
 </ul>
+
+<div id="SWV-JTAG"><h2 id="JTAG" class="header"><a href="#SWV-JTAG">JTAG</a></h2></div>
+<ul>
+<li>
+JTAG was the original debug method for ARM7/9 Family. However since the CORTEX - M Family, the SWD Interface has been introduced.
+
+<li>
+JTAG used 4 Pins for debugging -&gt; whereas SWD reduced the Pins to only 2
+
+<li>
+SWD has also been provided with a third pin Serial Wire Output SWO which is used to single wire Viewing which is  a low cost tracing technology
+
+</ul>
+
+<div id="SWV-Configurations for enabling printf functionality"><h2 id="Configurations for enabling printf functionality" class="header"><a href="#SWV-Configurations for enabling printf functionality">Configurations for enabling printf functionality</a></h2></div>
+<ul>
+<li>
+Does not work for M0 or M0+ Cortex family
+
+<li>
+printf is an API calling _write() containing the string *ptr:
+
+<ul>
+<li>
+In Order to use swo when calling printf _write() has to be configured first
+
+<li>
+If other functionalities are required such as LCD_Display , UART , etc the _write() function can be configured
+
+</ul>
+<li>
+Copy <a href="https://github.com/niekiran/Embedded-C/blob/master/All_source_codes/target/itm_send_data.c">https://github.com/niekiran/Embedded-C/blob/master/All_source_codes/target/itm_send_data.c</a>
+
+<li>
+Insert into STM32CubeIDE -&gt; SRC: SYSCALLS.c  
+
+<li>
+Copy its function name
+
+<li>
+replace in function _write() -&gt; io_putchar(*ptr++) with ITM_SendChar(*ptr++);
+
+</ul>
+
+<div id="SWV-Quickstart Run printf with SWO"><h2 id="Quickstart Run printf with SWO" class="header"><a href="#SWV-Quickstart Run printf with SWO">Quickstart Run printf with SWO</a></h2></div>
+<ol>
+<li>
+Perform Configurations as mentioned
+
+<li>
+Switch to Debug mode -&gt; go to Windows -&gt; Show View -&gt; SWV -&gt; SWV ITM Data Console
+
+<li>
+Then in the SWV ITM Data Console -&gt; Configure Trace -&gt; In the ITM Stimulus Ports section -&gt; select PORT 0 as the ITM Unit will be writing to Port 0 -&gt; start Trace -&gt; then Resume the Code in the menu bar or click F8
+
+</ol>
 
 </body>
 </html>
