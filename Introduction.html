@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Introduction</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="1. Introduction"><h1 id="1. Introduction" class="header"><a href="#1. Introduction">1. Introduction</a></h1></div>
+
+<div id="1. Introduction-Reasons for learning Assembly"><h2 id="Reasons for learning Assembly" class="header"><a href="#1. Introduction-Reasons for learning Assembly">Reasons for learning Assembly</a></h2></div>
+<ul>
+<li>
+handle boot process of computer
+
+<li>
+interrrupt handler code
+
+<li>
+low level locking code for multi threading
+
+<li>
+code for machines without a compiler
+
+<li>
+for optimizing code beyond the capability of a compiler
+
+<li>
+coding on computers with limited memory
+
+<li>
+code that requires low level access on architectural and processor features
+
+</ul>
+
+<div id="1. Introduction-Binary Representations"><h2 id="Binary Representations" class="header"><a href="#1. Introduction-Binary Representations">Binary Representations</a></h2></div>
+<ul>
+<li>
+Complement (ie, 0 ... 255)
+
+<li>
+Sign-magnitude (ie, 0 .. 127,-0 ... -127)
+
+<li>
+excess-N (ie, -127 ... 0 ... 128)
+
+<li>
+Two's Complement (ie, 0 ... 127, -128 ... -1)
+
+</ul>
+
+<div id="1. Introduction-Char Representations"><h2 id="Char Representations" class="header"><a href="#1. Introduction-Char Representations">Char Representations</a></h2></div>
+<ul>
+<li>
+A standarized version is ASCII - American Standard Code for Information Interchange:
+
+<ul>
+<li>
+As ASCII was published in the 1960s telephone wires were used for transmission
+
+<li>
+In order to inhance performance, due to the very slow data transmission, as the data had to be converted into audo signals which is then decoded by an acoustic modem, the ASCII Code had been defined as 7 Bit code, this led to an approximately 10% better data transmission performance.
+
+<li>
+However in order to provide information on how the character should be formatted, the total 8 Bits have been used, adding extra 33 Characters serving as character formatting Information.
+
+</ul>
+</ul>
+
+<div id="1. Introduction-Memory Layout of Executables"><h2 id="Memory Layout of Executables" class="header"><a href="#1. Introduction-Memory Layout of Executables">Memory Layout of Executables</a></h2></div>
+<ul>
+<li>
+little endian systems:
+
+<ul>
+<li>
+LSB in lowest memory address
+
+<li>
+MSP in highest memory address
+
+</ul>
+<li>
+Big endian systems:
+
+<ul>
+<li>
+LSB in highest memory address
+
+<li>
+MSP in lowest memory address
+
+</ul>
+</ul>
+
+<ul>
+<li>
+Typical Layout:
+<table>
+<tr>
+<td>
+Memory Address
+</td>
+<td>
+Memory Type
+</td>
+</tr>
+<tr>
+<td>
+----------------
+</td>
+<td>
+------------
+</td>
+</tr>
+<tr>
+<td>
+0xFFFF
+</td>
+<td>
+....
+</td>
+</tr>
+<tr>
+<td>
+....
+</td>
+<td>
+Stack
+</td>
+</tr>
+<tr>
+<td>
+....
+</td>
+<td>
+Currently unused
+</td>
+</tr>
+<tr>
+<td>
+....
+</td>
+<td>
+Heap
+</td>
+</tr>
+<tr>
+<td>
+....
+</td>
+<td>
+Data
+</td>
+</tr>
+<tr>
+<td>
+....
+</td>
+<td>
+Text
+</td>
+</tr>
+<tr>
+<td>
+0x0000
+</td>
+<td>
+....
+</td>
+</tr>
+</table>
+
+</ul>
+
+<ul>
+<li>
+Text:
+
+<ul>
+<li>
+Program Code containing executable instructions
+
+<li>
+Size Depends on program size and pre declared data storage by the programmer
+
+</ul>
+<li>
+Data:
+
+<ul>
+<li>
+Contains statically allocated variables, which when initialized have fixed addresses which are unchangable onces the program is running 
+
+<li>
+Size Depends on program size and pre declared data storage by the programmer
+
+</ul>
+<li>
+Heap:
+
+<ul>
+<li>
+Contains dynamically allocated variables -&gt; these are allocated using malloc/new/or-any-other-quivalent
+
+<li>
+The address if a dyn. Variable is always stored in another variable -&gt; pointer -&gt; which could be an automatic variable in stack or a statically allocated variable in the data section
+
+</ul>
+<li>
+Stack:
+
+<ul>
+<li>
+Contains used parameters for function calls, return addresses and local variables (automaticall allocated variable, once such a variable is allocated the stack pointer is adjusted down to make space for a new variable. These Variables are always computed as an offset of the stackpointer)
+
+</ul>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Brief Explanation of Kernel Developement</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<ol>
+<li>
+Intro
+
+<li>
+Setup and brief Kernel explanation
+
+</ol>
+<div id="2.1 What is Memory"><h1 id="2.1 What is Memory" class="header"><a href="#2.1 What is Memory">2.1 What is Memory</a></h1></div>
+ 
+<div id="2.1 What is Memory-Types"><h2 id="Types" class="header"><a href="#2.1 What is Memory-Types">Types</a></h2></div>
+<ul>
+<li>
+RAM: its the computers  main memory with r+w accessability
+
+<li>
+ROM: Is memory that can only be read
+
+</ul>
+
+<div id="2.1 What is Memory-RAM"><h2 id="RAM" class="header"><a href="#2.1 What is Memory-RAM">RAM</a></h2></div>
+<ul>
+<li>
+Read and writable memory
+
+<li>
+Used only for temporary storage
+
+<li>
+Information is lost when power lost
+
+</ul>
+
+<div id="2.1 What is Memory-ROM"><h2 id="ROM" class="header"><a href="#2.1 What is Memory-ROM">ROM</a></h2></div>
+<ul>
+<li>
+Permanent storage, saves information even after power down
+
+<li>
+Can not be written to by normal means
+
+<li>
+Generally used for storing permanent memory such as program for embedded devices
+
+<li>
+Example : BIOS
+
+</ul>
+
+<div id="2.1 What is Memory-Memory Structure"><h2 id="Memory Structure" class="header"><a href="#2.1 What is Memory-Memory Structure">Memory Structure</a></h2></div>
+<ul>
+<li>
+Memory is generally stored linearly 
+
+</ul>
+
+<p>
+---
+</p>
+
+<div id="2.2 Boot Process"><h1 id="2.2 Boot Process" class="header"><a href="#2.2 Boot Process">2.2 Boot Process</a></h1></div>
+
+<ul>
+<li>
+Executed from ROM -&gt; using BIOS CHIP
+
+<li>
+BIOS loads the bootloader into address 0x7C00  -&gt; The bootload loads the kernel
+
+</ul>
+
+<div id="2.2 Boot Process-Bootloader"><h2 id="Bootloader" class="header"><a href="#2.2 Boot Process-Bootloader">Bootloader</a></h2></div>
+<ul>
+<li>
+Its main task is to load the kernel of an OS
+
+<li>
+Generally manufacturers make their own bootloader, ie. Linus : grub
+
+<li>
+Generally small footprint
+
+<li>
+When the Computer first boots, it enters a compatibility mode called real mode
+
+<li>
+The Bootloader accesses functions within the BIOS to perform tasks
+
+<li>
+Main Task:
+
+<ol>
+<li>
+Load kernel into memory
+
+<li>
+Switch processor into 32Bit protected mode
+
+<li>
+Which in turn enables processor to execute our kernel
+
+</ol>
+</ul>
+
+<div id="2.2 Boot Process-Bootloader-Real Mode"><h3 id="Real Mode" class="header"><a href="#2.2 Boot Process-Bootloader-Real Mode">Real Mode</a></h3></div>
+<ul>
+<li>
+In Real Mode, we only have access to 1MB of Memory and can only  operate 16Bit code -&gt; Thats why the bootloader usually is of a smaller footprint
+
+<li>
+The purpose of the bootloader is to then switch the processor mode to protected mode which then gives  us access to 4GB of memory and lets us operate 32 Bit Commands
+
+</ul>
+
+<div id="2.2 Boot Process-Bootloader-BIOS"><h3 id="BIOS" class="header"><a href="#2.2 Boot Process-Bootloader-BIOS">BIOS</a></h3></div>
+<ul>
+<li>
+After the computer boots up, the CPU wil execute instructions directly from the BIOS's ROM
+
+<li>
+The BIOS will load itself to RAM memory
+
+<li>
+responsible to init essential hardware
+
+<li>
+The BIOS will look for a bootloader to boot by searching in all storage mediums for a boot signature "0x55AA" -&gt; Usually the 511th and 512th bytes contains this signature.
+
+<li>
+If the BIOS finds the singnature it in turn loads that memory sector into absoute address 0x7C00 and subsequently run from that address exercuting the bootloader by instructing the process to jump into that addres
+
+<li>
+The Bootloader is then executed 
+
+</ul>
+
+<div id="2.2 Boot Process-Bootloader-BIOS Mini Kernel"><h3 id="BIOS Mini Kernel" class="header"><a href="#2.2 Boot Process-Bootloader-BIOS Mini Kernel">BIOS Mini Kernel</a></h3></div>
+<ul>
+<li>
+The BIOS is a kernel in itself
+
+<li>
+It contains routines to assist out bootloader in booting the kernel
+
+<li>
+The BIOS is 16 Bit Code which means only 16 Bit code can execute the BIOS
+
+<li>
+BIOS Routines are generic and standard
+
+</ul>
+
+</body>
+</html>
