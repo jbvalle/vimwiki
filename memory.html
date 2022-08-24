@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>memory</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Memory"><h1 id="Memory" class="header"><a href="#Memory">Memory</a></h1></div>
+
+<div id="Memory-Performance - Memory - Size"><h2 id="Performance - Memory - Size" class="header"><a href="#Memory-Performance - Memory - Size">Performance - Memory - Size</a></h2></div>
+<ul>
+<li>
+A general rule is, the higher the performance the lesser the memory size
+
+<li>
+Cache is the fastest memory type
+
+</ul>
+
+
+<div id="Memory-Memory Width"><h2 id="Memory Width" class="header"><a href="#Memory-Memory Width">Memory Width</a></h2></div>
+<ul>
+<li>
+This is the number of memory returned per access
+
+<li>
+ie. a 16 bit memory needs two load fetch cycles for a 32. Bit data, however this is considered cheaper
+
+<li>
+ie. given we use the 16 Bit thumb mode with a memory width of 8 Bit, we would need 2 Cycles to fetch the complete 16 Bit data
+
+</ul>
+
+<div id="Memory-Memory Types"><h2 id="Memory Types" class="header"><a href="#Memory-Memory Types">Memory Types</a></h2></div>
+<ul>
+<li>
+ROM - Read only cannot be reprogrammed
+
+<li>
+Flash ROM:
+
+<ul>
+<li>
+usually used for devices firmware
+
+<li>
+can be written and read to
+
+</ul>
+<li>
+DRAM - Dynamic Random Access Memory
+
+<li>
+SRAM - static random acces memory:
+
+<ul>
+<li>
+faster than dram
+
+</ul>
+<li>
+SDRAM - Synchronous dynamic random access memory
+
+<ul>
+<li>
+faster than sram
+
+</ul>
+<li>
+EEPROM - can be written and read to
+
+<ul>
+<li>
+not all arm chip have an eeprom
+
+</ul>
+</ul>
+
+<p>
+== Memory Sections =
+</p>
+<ul>
+<li>
+SFR
+
+<li>
+SRAM:
+
+<ul>
+<li>
+used for data and stack
+
+</ul>
+<li>
+EEPROM:
+
+<ul>
+<li>
+memory that can be added externally to chip
+
+</ul>
+<li>
+FLASH (ROM):
+
+<ul>
+<li>
+used for program code
+
+</ul>
+<li>
+Peripherals I/O:
+
+<ul>
+<li>
+usually white blanks in memory diagram
+
+</ul>
+</ul>
+
+</body>
+</html>

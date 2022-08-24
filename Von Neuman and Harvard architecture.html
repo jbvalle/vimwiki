@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Von Neuman and Harvard architecture</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Von Neuman and Harvard architecture"><h1 id="Von Neuman and Harvard architecture" class="header"><a href="#Von Neuman and Harvard architecture">Von Neuman and Harvard architecture</a></h1></div>
+
+
+<div id="Von Neuman and Harvard architecture-Von Neumann"><h2 id="Von Neumann" class="header"><a href="#Von Neuman and Harvard architecture-Von Neumann">Von Neumann</a></h2></div>
+
+                 
+<ul>
+<li>
+Every component is connected by a connected centralized bus
+
+<li>
+The cpu is controlled by the content of the memory
+
+</ul>
+
+<div id="Von Neuman and Harvard architecture-Von Neumann-Diagram Von Neuman"><h3 id="Diagram Von Neuman" class="header"><a href="#Von Neuman and Harvard architecture-Von Neumann-Diagram Von Neuman">Diagram Von Neuman</a></h3></div>
+<blockquote>
+CPU
++
+|                              
++------------+--------------+ Memory
+|
+|
++--------------+ Peripherals: IN &amp; OUT
+</blockquote>
+
+
+<div id="Von Neuman and Harvard architecture-Harvard Architecture"><h2 id="Harvard Architecture" class="header"><a href="#Von Neuman and Harvard architecture-Harvard Architecture">Harvard Architecture</a></h2></div>
+<ul>
+<li>
+The Program Code Memory and Data Memory are seperated and both interface the CPU by different busses
+
+</ul>
+
+<div id="Von Neuman and Harvard architecture-Harvard Architecture-Diagram Harvard"><h3 id="Diagram Harvard" class="header"><a href="#Von Neuman and Harvard architecture-Harvard Architecture-Diagram Harvard">Diagram Harvard</a></h3></div>
+<blockquote>
+CPU +---------- Intruction memory (for program code)
++
+|
++-------+----- Data Memory (for variables)
+|
++----- Peripherals: IN &amp; OUT
+</blockquote>
+            
+<div id="Von Neuman and Harvard architecture-Main Differences"><h2 id="Main Differences" class="header"><a href="#Von Neuman and Harvard architecture-Main Differences">Main Differences</a></h2></div>
+<table>
+<tr>
+<td>
+Von Neumann
+</td>
+<td>
+Harvard
+</td>
+</tr>
+<tr>
+<td>
+Single bus is simpler design
+</td>
+<td>
+multiplex is more complex
+</td>
+</tr>
+<tr>
+<td>
+Common memory for data and instructions
+</td>
+<td>
+seperate memory space for data and instructions
+</td>
+</tr>
+<tr>
+<td>
+Simultaneous multiple memory fetches are not allowed
+</td>
+<td>
+Allows 2 simultaneous memory fetches
+</td>
+</tr>
+</table>
+
+</body>
+</html>

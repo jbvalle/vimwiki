@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>SysCalls under the microscope</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="SysCalls under the microscope"><h1 id="SysCalls under the microscope" class="header"><a href="#SysCalls under the microscope">SysCalls under the microscope</a></h1></div>
+
+<ol>
+<li>
+A Userprocess make a function call to read a file
+
+<li>
+The Userprocess invokes a function which is executed as defined in libc
+
+<li>
+The function in Libc then invokes a system call which is redirected to the kernel
+
+<li>
+The kernel executes the system call and access the filesystem to read the file
+
+<li>
+The file is then copied to a buffer inside the userspace
+
+<li>
+Once the kernel process is done the user process continues, until then is stays frozen
+
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Unix Union</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Unix Union"><h1 id="Unix Union" class="header"><a href="#Unix Union">Unix Union</a></h1></div>
+<p>
+The general structure of the Unix Union describes the architecture of a Unix Operating system
+</p>
+<ol>
+<li>
+Layer: Kernel:
+
+<ul>
+<li>
+The Kernel is next software layer surrounding the hardware. It hold the highest priviliges and controls the inner working of the hardware
+
+</ul>
+<li>
+Layer: Shell:
+
+<ul>
+<li>
+The shell is the interfacing layer communicating with the kernel over syscalls
+
+<li>
+It consists of a set of tools that enable communication with the kernel
+
+</ul>
+<li>
+Layer Application:
+
+<ul>
+<li>
+This layer contains the actual program a user would interact with
+
+<li>
+This programs access the kernel by interfacing with the shell program by using the system calls provided
+
+<li>
+Using this approach makes a program more portable 
+
+</ul>
+</ol>
+
+</body>
+</html>

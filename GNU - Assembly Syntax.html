@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>GNU - Assembly Syntax</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Gnu Assembly Directives"><h1 id="Gnu Assembly Directives" class="header"><a href="#Gnu Assembly Directives">Gnu Assembly Directives</a></h1></div>
+
+<div id="Gnu Assembly Directives-Assembly Directives"><h2 id="Assembly Directives" class="header"><a href="#Gnu Assembly Directives-Assembly Directives">Assembly Directives</a></h2></div>
+
+<div id="Gnu Assembly Directives-Assembly Directives-Directives for selecting the current Section"><h3 id="Directives for selecting the current Section" class="header"><a href="#Gnu Assembly Directives-Assembly Directives-Directives for selecting the current Section">Directives for selecting the current Section</a></h3></div>
+<p>
+Selections are used to devide the system memory into independent groups of segments which are referenced by pointers located in the segment register. Each of these Segments can be subdivided into further sub segment. Each Section contain specific types of data, .data (for static memory) and .bss (these are initialized with zero), .text for machine instructions and stack for parameters, local variables automatically allocated variables.
+</p>
+
+<ul>
+<li>
+.data usually used for global variables and constants which have labels
+
+<li>
+.text used for executables as well as constants
+
+<li>
+.bss (block started by symbol) used for defining data storage areas which are initialized with zero, usually used for global variables. This section doesnt consume memory space, as it just request the loader to reserve memory space when the program is loaded to memory.
+
+<li>
+.section name, a custom section can be created used using this directive. In order for custom sections to be recognized by the linker, the linker first have to be made aware of them.
+
+</ul>
+
+<div id="Gnu Assembly Directives-Assembly Directives-Allocating memory for variables and constants"><h3 id="Allocating memory for variables and constants" class="header"><a href="#Gnu Assembly Directives-Assembly Directives-Allocating memory for variables and constants">Allocating memory for variables and constants</a></h3></div>
+<ul>
+<li>
+.byte expr: this directive expects zero or more expr and allocates byte long variables
+
+<li>
+.hword expr and .short expr : 16 bit long expressions
+
+<li>
+.word expr and .long expr : 4 Byte long expressions -&gt; 32 Bit
+
+<li>
+.ascii "string" : Assembles each string into consectuve addresses -&gt; no trailing null char
+
+<li>
+.asciz "string" and .string "string" : Similar to .ascii but appends a null char
+
+<li>
+.float float_num and .single float_num : 4 Byte long single precision
+
+<li>
+.double float_num : 8 Byte double precision number
+
+</ul>
+
+<div id="Gnu Assembly Directives-Assembly Directives-Filling and aligning"><h3 id="Filling and aligning" class="header"><a href="#Gnu Assembly Directives-Assembly Directives-Filling and aligning">Filling and aligning</a></h3></div>
+<ul>
+<li>
+.align expr1, expr2, expr3 :
+
+<ul>
+<li>
+expr1: specifies number of low order zero bits of location counter after advancement
+
+<li>
+expr2: specifies value to be stored in the padding bytes (this as well as the comma can be ommited)
+
+<li>
+expr3: specifies the maximum number of bytes that are allowed to be filled with (just as expr2 this is optional)
+
+</ul>
+<li>
+.balign [lw] expr1, expr2, expr3 :
+
+<ul>
+<li>
+expr1 : defines the byte multiple: ie .balign 2 fill as many bytes as needed until the location counter is a multiple of 2
+
+<li>
+expr2 : defines the fill value that should be used
+
+<li>
+expr3 : defines the max number of bytes that is to be skipped
+
+<li>
+.balignl and .balignw are variants :
+
+<ul>
+<li>
+.balignl treats the fill pattern (expr2) as 2 bytes meaning expr2 will be filled in every 2 bytes
+
+<li>
+.balignw treats the fill pattern (expr2) as 4 bytes meaning expr2 will be filled in every 4 bytes
+
+</ul>
+</ul>
+<li>
+.skip byte_size, fill and .space byte_size, fill :
+
+<ul>
+<li>
+this is used for specifying large number of bytes and initializing them with fill. This is often used in .bss section
+
+</ul>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Bypassing LIBC and calling syscalls directly</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Bypassing Libc and calling a syscall directly"><h1 id="Bypassing Libc and calling a syscall directly" class="header"><a href="#Bypassing Libc and calling a syscall directly">Bypassing Libc and calling a syscall directly</a></h1></div>
+<ul>
+<li>
+Bypassing can be used by directly calling the system call function syscall(). This however make the program not portable anymore. syscall() is defined in sys/syscall.h header. This function is part of the GNU Library C and therefore needs #define _GNU_SOURCE to indicate that glibc will be used which however is not part of POSIX or SUS
+
+</ul>
+
+<p>
+```d
+// We need to have this to be able to use non-POSIX stuff #define _GNU_SOURCE #include  // This is not part of POSIX! #include  int main(int argc, char** argv) { char message[20] = "Hello World!\n"; // Invokes the 'write' system call that writes // some bytes into the standard output. syscall(__NR_write, 1, message, 13); return 0; }
+// Needed to used non posix standard functions
+// _GNU_SOURCE indicates that GNU C LIRARY specific functions will be used which are not part of posix or sus
+#define _GNU_SOURCE
+#include &lt;unistd.h&gt;
+// NON Posix header 
+#include &lt;sys/syscall.h&gt;
+</p>
+
+<p>
+int main(void){
+</p>
+<blockquote>
+char message[]="Hello World\n";
+</blockquote>
+<blockquote>
+syscall(__NR_write, 1, message, 13);
+</blockquote>
+<blockquote>
+return 0;
+</blockquote>
+<p>
+}
+```
+</p>
+
+</body>
+</html>

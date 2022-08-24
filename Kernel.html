@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Kernel</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Kernel"><h1 id="Kernel" class="header"><a href="#Kernel">Kernel</a></h1></div>
+
+<p>
+The general path to exposing a hardware functionality by software is as follows.
+</p>
+<ol>
+<li>
+(Application Ring) User Process:
+
+<ol>
+<li>
+this processes invokes function calls defined in LIBC
+
+<li>
+This function call is redirected to LIBC
+
+</ol>
+<li>
+(Shell Ring) LIBC:
+
+<ol>
+<li>
+The function call which is defined in LIBC is executed
+
+<li>
+The function call invokes the necessary systemcalls which are redirected to the kernel ring
+
+</ol>
+<li>
+(Kernel Ring) Kernel Process:
+
+<ol>
+<li>
+The Kernel Process executed the systemcalls programs with the highest priviliges making it possible to access the whole memory space and all devices
+
+</ol>
+</ol>
+
+<div id="Kernel-The Properties of a kernel"><h2 id="The Properties of a kernel" class="header"><a href="#Kernel-The Properties of a kernel">The Properties of a kernel</a></h2></div>
+<ul>
+<li>
+The kernel process is the first thing that is loaded and executed
+
+<li>
+The is only one kernel process, but multiple user processes are possible
+
+<li>
+The Use Process invokes the system calls and waits until the kernel process handles and executes all the system calls
+
+</ul>
+
+<div id="Kernel-Tasks of a kernel"><h2 id="Tasks of a kernel" class="header"><a href="#Kernel-Tasks of a kernel">Tasks of a kernel</a></h2></div>
+<ul>
+<li>
+Process Management:
+
+<ul>
+<li>
+User Processes are created by the kernel via system calls
+
+<li>
+The Kernel is responsible for allocating the needed memory, and load the needed instructions
+
+</ul>
+<li>
+Inter Process Communication (IPC):
+
+<ul>
+<li>
+The kernel is responsible to enable communicatio between processes though shared memories, pipes and unix domain sockets
+
+</ul>
+<li>
+Scheduling:
+
+<ul>
+<li>
+Scheduling is the action handled by a task to coordinate different processes and base them on priority and importance and handle multitasking.
+
+</ul>
+<li>
+Memory Management:
+
+<ul>
+<li>
+The Kernel is responsible for allocating and freeing memory needed by processes as well as all memory related tasks.
+
+</ul>
+<li>
+System StartUp:
+
+<ul>
+<li>
+After the kernel image is loaded into main memory, its job is to initialize the userspace, by creating the first user processes with Process ID 1 and initializing hardware.
+
+</ul>
+<li>
+Device Management:
+
+<ul>
+<li>
+The kernel is also responsible for handling real and virtual hardware by handling the memory mapped device files used by user processes for communication
+
+</ul>
+</ul>
+
+</body>
+</html>
