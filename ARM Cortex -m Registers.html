@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>ARM Cortex -m Registers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="ARM - Cortex M - Registers"><h1 id="ARM - Cortex M - Registers" class="header"><a href="#ARM - Cortex M - Registers">ARM - Cortex M - Registers</a></h1></div>
+<ul>
+<li>
+The ARM - CORTEX M Family is a subset of the ARM Instruction set
+
+<li>
+However their programming models are very similar to earlier versions such as arm7tdmi
+
+<li>
+In fact, instruction and registers concerning the first 15 Registers are the same
+
+</ul>
+
+<div id="ARM - Cortex M - Registers-Specs"><h2 id="Specs" class="header"><a href="#ARM - Cortex M - Registers-Specs">Specs</a></h2></div>
+<table>
+<tr>
+<td>
+17
+</td>
+<td>
+General Purpose Registers
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+Status Register
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+interrupt mask registers
+</td>
+</tr>
+</table>
+
+
+<div id="ARM - Cortex M - Registers-Registers"><h2 id="Registers" class="header"><a href="#ARM - Cortex M - Registers-Registers">Registers</a></h2></div>
+<ul>
+<li>
+Available : R15 : R0
+<table>
+<tr>
+<td>
+R13
+</td>
+<td>
+Stack Pointer SP
+</td>
+</tr>
+<tr>
+<td>
+R14
+</td>
+<td>
+Link Register LR
+</td>
+</tr>
+<tr>
+<td>
+R15
+</td>
+<td>
+Program Counter PC
+</td>
+</tr>
+</table>
+
+</ul>
+
+<ul>
+<li>
+Special Registers:
+
+<ul>
+<li>
+xPSR
+
+<li>
+PRIMAS
+
+<li>
+FAULTMASK
+
+<li>
+BASEPRI
+
+<li>
+CONTROL
+
+</ul>
+</ul>
+
+<ul>
+<li>
+Stackpointer has:
+
+<ul>
+<li>
+Main Stack Pointer
+
+<li>
+Process Stack Pointer
+
+</ul>
+</ul>
+
+<div id="ARM - Cortex M - Registers-Accessing Special Registers"><h2 id="Accessing Special Registers" class="header"><a href="#ARM - Cortex M - Registers-Accessing Special Registers">Accessing Special Registers</a></h2></div>
+<ul>
+<li>
+For Addressing Special Registers we need:
+
+<ul>
+<li>
+MRS ; Read special Register
+
+<li>
+MSR ; Write into special register
+
+</ul>
+</ul>
+
+<div id="ARM - Cortex M - Registers-xPSR"><h2 id="xPSR" class="header"><a href="#ARM - Cortex M - Registers-xPSR">xPSR</a></h2></div>
+<ul>
+<li>
+Can be accessed with following registers, which each are specialized registers for accessing special functions
+
+<ul>
+<li>
+APSR - Application PSR
+
+<li>
+EPSR - Execution PSR
+
+<li>
+IPSR -ISR
+
+</ul>
+</ul>
+
+<div id="ARM - Cortex M - Registers-xPSR-APSR"><h3 id="APSR" class="header"><a href="#ARM - Cortex M - Registers-xPSR-APSR">APSR</a></h3></div>
+<table>
+<tr>
+<td>
+N
+</td>
+<td>
+31
+</td>
+<td>
+Null
+</td>
+</tr>
+<tr>
+<td>
+Z
+</td>
+<td>
+30
+</td>
+<td>
+Zero
+</td>
+</tr>
+<tr>
+<td>
+C
+</td>
+<td>
+29
+</td>
+<td>
+Carry
+</td>
+</tr>
+<tr>
+<td>
+V
+</td>
+<td>
+28
+</td>
+<td>
+Overflow
+</td>
+</tr>
+<tr>
+<td>
+Q
+</td>
+<td>
+27
+</td>
+<td>
+Sticky Flags, can only be declared by writing 0 to it
+</td>
+</tr>
+<tr>
+<td>
+GE[3:0]
+</td>
+<td>
+19 : 16
+</td>
+<td>
+Greater than or equalt to flag
+</td>
+</tr>
+</table>
+
+<div id="ARM - Cortex M - Registers-xPSR-EPSR"><h3 id="EPSR" class="header"><a href="#ARM - Cortex M - Registers-xPSR-EPSR">EPSR</a></h3></div>
+<table>
+<tr>
+<td>
+ICI / IT
+</td>
+<td>
+26 : 25
+</td>
+<td>
+Interrupt Continuation Instruction bits / IF-THEN BIT
+</td>
+</tr>
+<tr>
+<td>
+T
+</td>
+<td>
+24
+</td>
+<td>
+Thumb Bit
+</td>
+</tr>
+<tr>
+<td>
+ICI / IT
+</td>
+<td>
+15 : 8
+</td>
+<td>
+Interrupt Continuation Instruction bits / IF-THEN BIT
+</td>
+</tr>
+</table>
+
+<div id="ARM - Cortex M - Registers-xPSR-IPSR"><h3 id="IPSR" class="header"><a href="#ARM - Cortex M - Registers-xPSR-IPSR">IPSR</a></h3></div>
+<table>
+<tr>
+<td>
+ISRNUM
+</td>
+<td>
+7 : 0
+</td>
+<td>
+Exception Handler for handling Faults
+</td>
+</tr>
+</table>
+
+</body>
+</html>

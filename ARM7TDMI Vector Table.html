@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>ARM7TDMI Vector Table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="ARM7TDMI Vector Table"><h1 id="ARM7TDMI Vector Table" class="header"><a href="#ARM7TDMI Vector Table">ARM7TDMI Vector Table</a></h1></div>
+<ul>
+<li>
+The Vector Table is a collection of addresses the program counter can jump to in memory, where it continues executing the instructions in starting that address
+
+<li>
+ie. in the case of an interrupt the program counter will jump to the address associated with that interrupt
+
+</ul>
+
+<div id="ARM7TDMI Vector Table-ARM7TDI Specific Vector Table"><h2 id="ARM7TDI Specific Vector Table" class="header"><a href="#ARM7TDMI Vector Table-ARM7TDI Specific Vector Table">ARM7TDI Specific Vector Table</a></h2></div>
+<table>
+<tr>
+<th>
+Exception
+</th>
+<th>
+Mode
+</th>
+<th>
+Vector Address
+</th>
+</tr>
+<tr>
+<td>
+Reset
+</td>
+<td>
+SVC
+</td>
+<td>
+0x0000 0000
+</td>
+</tr>
+<tr>
+<td>
+Undef. instruction
+</td>
+<td>
+UNDEF
+</td>
+<td>
+0x0000 0004
+</td>
+</tr>
+<tr>
+<td>
+Software interrupt (SVC)
+</td>
+<td>
+SVC
+</td>
+<td>
+0x0000 0008
+</td>
+</tr>
+<tr>
+<td>
+Prefetch Abort
+</td>
+<td>
+ABORT
+</td>
+<td>
+0x0000 000C
+</td>
+</tr>
+<tr>
+<td>
+Data Abort
+</td>
+<td>
+ABORT
+</td>
+<td>
+0x0000 0010
+</td>
+</tr>
+<tr>
+<td>
+IRQ
+</td>
+<td>
+IRQ
+</td>
+<td>
+0x0000 0018
+</td>
+</tr>
+<tr>
+<td>
+FIQ
+</td>
+<td>
+FIQ
+</td>
+<td>
+0x0000 001C
+</td>
+</tr>
+</table>
+
+</body>
+</html>

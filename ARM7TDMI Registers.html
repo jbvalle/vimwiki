@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>ARM7TDMI Registers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="ARM7 Registers"><h1 id="ARM7 Registers" class="header"><a href="#ARM7 Registers">ARM7 Registers</a></h1></div>
+
+<div id="ARM7 Registers-Processor"><h2 id="Processor" class="header"><a href="#ARM7 Registers-Processor">Processor</a></h2></div>
+<ul>
+<li>
+30    General Purpose Registers
+
+<li>
+ 6    Status Registers
+
+<li>
+ 1    Program Counter Register
+
+</ul>
+
+<div id="ARM7 Registers-Registers"><h2 id="Registers" class="header"><a href="#ARM7 Registers-Registers">Registers</a></h2></div>
+<ul>
+<li>
+Accessable Registers are different depending on the current mode
+
+<li>
+Overview:
+
+</ul>
+
+<table>
+<tr>
+<td>
+R0  -  R12
+</td>
+<td>
+General Purpose Registers contain data or addresses
+</td>
+</tr>
+<tr>
+<td>
+R13
+</td>
+<td>
+Also known es Stack Pointer SP - points at the top element of the stack
+</td>
+</tr>
+<tr>
+<td>
+R14
+</td>
+<td>
+Linkder Register LR - used to store return location for functions
+</td>
+</tr>
+<tr>
+<td>
+R15
+</td>
+<td>
+Program Counter PC - it is readable and writable
+</td>
+</tr>
+</table>
+
+
+<div id="ARM7 Registers-CPSR - Current Program Status Register"><h2 id="CPSR - Current Program Status Register" class="header"><a href="#ARM7 Registers-CPSR - Current Program Status Register">CPSR - Current Program Status Register</a></h2></div>
+<blockquote>
++---+---+---+---+---------------+---+---+---+----+----+----+----+----+
+<table class='center'>
+<tr>
+<td>
+N
+</td>
+<td>
+Z
+</td>
+<td>
+C
+</td>
+<td>
+V
+</td>
+<td>
+-------------
+</td>
+<td>
+I
+</td>
+<td>
+F
+</td>
+<td>
+T
+</td>
+<td>
+M4
+</td>
+<td>
+M3
+</td>
+<td>
+M2
+</td>
+<td>
+M1
+</td>
+<td>
+M0
+</td>
+</tr>
+</table>
++---+---+---+---+---------------+---+---+---+----+----+----+----+----+
+</blockquote>
+    
+<ul>
+<li>
+N, Z, C, V - Used for Status Registers
+
+<li>
+I | F - Used to set Normal Interrupt or Fast interrupt
+
+<li>
+T - Status Bit -&gt; gives information about the status of the system
+
+<li>
+M4:M0 - is used to set processor mode xPSR[4:0]
+
+</ul>
+
+</body>
+</html>

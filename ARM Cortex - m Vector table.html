@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>ARM Cortex - m Vector table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="ARM - CORTEX M Vector Table"><h1 id="ARM - CORTEX M Vector Table" class="header"><a href="#ARM - CORTEX M Vector Table">ARM - CORTEX M Vector Table</a></h1></div>
+<ul>
+<li>
+LSB Bit should always be set to 1
+
+<li>
+Executes THUMB 2 Mode
+
+</ul>
+
+<table>
+<tr>
+<td>
+Exception Type
+</td>
+<td>
+Exception No.
+</td>
+<td>
+Vector Address
+</td>
+</tr>
+<tr>
+<td>
+Top of Stack
+</td>
+<td>
+-
+</td>
+<td>
+0x0000 0000
+</td>
+</tr>
+<tr>
+<td>
+Reset
+</td>
+<td>
+1
+</td>
+<td>
+0x0000 0004
+</td>
+</tr>
+<tr>
+<td>
+NMI
+</td>
+<td>
+2
+</td>
+<td>
+0x0000 0008
+</td>
+</tr>
+<tr>
+<td>
+Hard Fault
+</td>
+<td>
+3
+</td>
+<td>
+0x0000 000C
+</td>
+</tr>
+<tr>
+<td>
+Memory Management Fault
+</td>
+<td>
+4
+</td>
+<td>
+0x0000 0010
+</td>
+</tr>
+<tr>
+<td>
+Bus Fault
+</td>
+<td>
+5
+</td>
+<td>
+0x0000 0014
+</td>
+</tr>
+<tr>
+<td>
+Usage Fault
+</td>
+<td>
+6
+</td>
+<td>
+0x0000 0018
+</td>
+</tr>
+<tr>
+<td>
+Svcall
+</td>
+<td>
+11
+</td>
+<td>
+0x0000 002C
+</td>
+</tr>
+<tr>
+<td>
+Debug Monitor
+</td>
+<td>
+12
+</td>
+<td>
+0x0000 0030
+</td>
+</tr>
+<tr>
+<td>
+PendSV
+</td>
+<td>
+14
+</td>
+<td>
+0x0000 0038
+</td>
+</tr>
+<tr>
+<td>
+SysTick
+</td>
+<td>
+15
+</td>
+<td>
+0x0000 003C
+</td>
+</tr>
+<tr>
+<td>
+Interrupts
+</td>
+<td>
+16_and_above
+</td>
+<td>
+0x0000 0040 _ and above
+</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Processor Modes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Processor Modes"><h1 id="Processor Modes" class="header"><a href="#Processor Modes">Processor Modes</a></h1></div>
+
+<div id="Processor Modes-ARM7 Modes"><h3 id="ARM7 Modes" class="header"><a href="#Processor Modes-ARM7 Modes">ARM7 Modes</a></h3></div>
+<table>
+<tr>
+<td>
+Types
+</td>
+<td>
+Privilege
+</td>
+<td>
+Description
+</td>
+</tr>
+<tr>
+<td>
+Supervisor SVC
+</td>
+<td>
+Privileged Mode
+</td>
+<td>
+Entered on reset and when software interrupt occurs
+</td>
+</tr>
+<tr>
+<td>
+FIQ
+</td>
+<td>
+Privileged Mode
+</td>
+<td>
+Entered on reset and when software interrupt occurs
+</td>
+</tr>
+<tr>
+<td>
+IRQ
+</td>
+<td>
+Privileged Mode
+</td>
+<td>
+Entered when normal interrupt is raised
+</td>
+</tr>
+<tr>
+<td>
+Abort
+</td>
+<td>
+Privileged Mode
+</td>
+<td>
+Entered Memory access violation
+</td>
+</tr>
+<tr>
+<td>
+Undef
+</td>
+<td>
+Privileged Mode
+</td>
+<td>
+Entered when undefined instruction has been called
+</td>
+</tr>
+<tr>
+<td>
+System
+</td>
+<td>
+Privileged Mode
+</td>
+<td>
+Privileged Mode using the same registers as user mode
+</td>
+</tr>
+<tr>
+<td>
+User
+</td>
+<td>
+Unpreviliged Mode
+</td>
+<td>
+Normal application mode
+</td>
+</tr>
+</table>
+
+<div id="Processor Modes-CORTEX - M4 - Modes"><h3 id="CORTEX - M4 - Modes" class="header"><a href="#Processor Modes-CORTEX - M4 - Modes">CORTEX - M4 - Modes</a></h3></div>
+<p>
+Handler Mode:
+</p>
+<ul>
+<li>
+Privileged: Exception Handling
+
+<li>
+User: ---
+
+</ul>
+<p>
+Thread Mode:
+</p>
+<ul>
+<li>
+Privileged: Application
+
+<li>
+User: Application
+
+</ul>
+
+</body>
+</html>
