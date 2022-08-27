@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Structure of an Assembly Module</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="General Assemby structure"><h1 id="General Assemby structure" class="header"><a href="#General Assemby structure">General Assemby structure</a></h1></div>
+
+<p>
+```assembly
+</p>
+<blockquote>
+AREA FFT CODE, READONLY             ; Naming code block as FFT
+</blockquote>
+<blockquote>
+ENTRY                               ; Marking the first instruction to execute
+</blockquote>
+
+<p>
+Start   MOV R0, #10                         ; Setting up parameters
+</p>
+<blockquote>
+MOV R1, #3
+</blockquote>
+<blockquote>
+ADD R0, R0, R1                      ; R0 += R1
+</blockquote>
+        
+<p>
+Stop    B   stop                            ; infinite loop using Branching
+</p>
+<blockquote>
+END                                 ; Marking end of file
+</blockquote>
+<p>
+```
+</p>
+
+</body>
+</html>

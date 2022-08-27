@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>ARM Instruction set</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="ARM Instructions"><h1 id="ARM Instructions" class="header"><a href="#ARM Instructions">ARM Instructions</a></h1></div>
+
+<div id="ARM Instructions-Structure"><h2 id="Structure" class="header"><a href="#ARM Instructions-Structure">Structure</a></h2></div>
+<p>
+MNEMONICS{S}{condition}     {Rd},  Rn,  Rm
+</p>
+
+<ul>
+<li>
+MNEMONICS: Name of the instruction
+
+<li>
+{S}: an optional suffix. If S is specified the condition flags are updated on the result of the operation
+
+<li>
+{condition}: condition that is needed in order for the isntruction to be executed
+
+</ul>
+
+<div id="ARM Instructions-Structure-Rm - flexible"><h3 id="Rm - flexible" class="header"><a href="#ARM Instructions-Structure-Rm - flexible">Rm - flexible</a></h3></div>
+<ul>
+<li>
+Rm or second operand is called flexible because we can use various forms:
+<table>
+<tr>
+<td>
+#123
+</td>
+<td>
+Immidiate value
+</td>
+</tr>
+<tr>
+<td>
+Rx
+</td>
+<td>
+Register x ie r1, r2 , etc
+</td>
+</tr>
+<tr>
+<td>
+Rx, ASR n
+</td>
+<td>
+Reg x with arythmetic shift right by n bits n = 1 ... 32
+</td>
+</tr>
+<tr>
+<td>
+Rx, LSL n
+</td>
+<td>
+Reg x with logical shift left by n bits n = 0 ... 31
+</td>
+</tr>
+<tr>
+<td>
+Rx, LSR n
+</td>
+<td>
+Reg x with logical shift right by n bits n = 1 ... 32
+</td>
+</tr>
+<tr>
+<td>
+Rx, ROR n
+</td>
+<td>
+Reg x with rotation right by n bits n = 1 ... 31
+</td>
+</tr>
+<tr>
+<td>
+Rx, RRX
+</td>
+<td>
+with Reg x with rotate by one bit with extend
+</td>
+</tr>
+</table>
+
+</ul>
+
+
+<div id="ARM Instructions-Common instructions"><h2 id="Common instructions" class="header"><a href="#ARM Instructions-Common instructions">Common instructions</a></h2></div>
+<table>
+<tr>
+<td>
+instruction
+</td>
+<td>
+Description
+</td>
+</tr>
+<tr>
+<td>
+MOV
+</td>
+<td>
+Move data
+</td>
+</tr>
+<tr>
+<td>
+MVN
+</td>
+<td>
+Move and negate
+</td>
+</tr>
+<tr>
+<td>
+ADD
+</td>
+<td>
+Addition
+</td>
+</tr>
+<tr>
+<td>
+SUB
+</td>
+<td>
+Subtract
+</td>
+</tr>
+<tr>
+<td>
+MUL
+</td>
+<td>
+Multiply
+</td>
+</tr>
+<tr>
+<td>
+LSL
+</td>
+<td>
+Logical shift left
+</td>
+</tr>
+<tr>
+<td>
+LSR
+</td>
+<td>
+Logical shift right
+</td>
+</tr>
+<tr>
+<td>
+ASR
+</td>
+<td>
+Arythmetic Shift Right
+</td>
+</tr>
+<tr>
+<td>
+ROR
+</td>
+<td>
+Rotate Right
+</td>
+</tr>
+<tr>
+<td>
+CMP
+</td>
+<td>
+Compare
+</td>
+</tr>
+<tr>
+<td>
+AND
+</td>
+<td>
+Bitwise AND
+</td>
+</tr>
+<tr>
+<td>
+ORR
+</td>
+<td>
+Bitwise OR
+</td>
+</tr>
+<tr>
+<td>
+EOR
+</td>
+<td>
+Bitwise XOR
+</td>
+</tr>
+<tr>
+<td>
+LDR
+</td>
+<td>
+LOAD
+</td>
+</tr>
+<tr>
+<td>
+STR
+</td>
+<td>
+Store
+</td>
+</tr>
+<tr>
+<td>
+LDM
+</td>
+<td>
+Load multiple
+</td>
+</tr>
+<tr>
+<td>
+STM
+</td>
+<td>
+Store Multiple
+</td>
+</tr>
+<tr>
+<td>
+PUSH
+</td>
+<td>
+Push on stack
+</td>
+</tr>
+<tr>
+<td>
+POP
+</td>
+<td>
+Pop off Stack
+</td>
+</tr>
+<tr>
+<td>
+B
+</td>
+<td>
+Branch
+</td>
+</tr>
+<tr>
+<td>
+BL
+</td>
+<td>
+Branch wih link
+</td>
+</tr>
+<tr>
+<td>
+BX
+</td>
+<td>
+Branch and Exchange
+</td>
+</tr>
+<tr>
+<td>
+BLX
+</td>
+<td>
+Branch with link and exchange
+</td>
+</tr>
+<tr>
+<td>
+SWI / SVC
+</td>
+<td>
+System Call
+</td>
+</tr>
+</table>
+
+</body>
+</html>

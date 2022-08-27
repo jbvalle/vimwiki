@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>ARM Data Types and Registers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="ARM DATA Types"><h1 id="ARM DATA Types" class="header"><a href="#ARM DATA Types">ARM DATA Types</a></h1></div>
+
+<div id="ARM DATA Types-Example of instruction using different datatypes"><h2 id="Example of instruction using different datatypes" class="header"><a href="#ARM DATA Types-Example of instruction using different datatypes">Example of instruction using different datatypes</a></h2></div>
+<table>
+<tr>
+<td>
+-h / -sh
+</td>
+<td>
+unsigned and signed halfwords - 16. Bit
+</td>
+</tr>
+<tr>
+<td>
+-b / -sb
+</td>
+<td>
+unsigned and signed bytes - 8 Bit
+</td>
+</tr>
+<tr>
+<td>
+none
+</td>
+<td>
+word
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>
+ldr
+</td>
+<td>
+load word
+</td>
+</tr>
+<tr>
+<td>
+ldrh
+</td>
+<td>
+load unsigned halfword
+</td>
+</tr>
+<tr>
+<td>
+ldrsh
+</td>
+<td>
+load signed halfword
+</td>
+</tr>
+<tr>
+<td>
+ldrb
+</td>
+<td>
+load unsigned byte
+</td>
+</tr>
+<tr>
+<td>
+ldrsb
+</td>
+<td>
+load signed byte
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>
+str
+</td>
+<td>
+load word
+</td>
+</tr>
+<tr>
+<td>
+strh
+</td>
+<td>
+load unsigned halfword
+</td>
+</tr>
+<tr>
+<td>
+strsh
+</td>
+<td>
+load signed halfword
+</td>
+</tr>
+<tr>
+<td>
+strb
+</td>
+<td>
+load unsigned byte
+</td>
+</tr>
+<tr>
+<td>
+strsb
+</td>
+<td>
+load signed byte
+</td>
+</tr>
+</table>
+
+<div id="ARM DATA Types-Endianess"><h2 id="Endianess" class="header"><a href="#ARM DATA Types-Endianess">Endianess</a></h2></div>
+<ul>
+<li>
+for setting little or big Endianess set Bit 9 of the Program Status Register CPSR
+
+</ul>
+
+<div id="ARM DATA Types-Endianess-Little Endianess"><h3 id="Little Endianess" class="header"><a href="#ARM DATA Types-Endianess-Little Endianess">Little Endianess</a></h3></div>
+<table>
+<tr>
+<td>
+Byte 3 : Higher Address
+</td>
+<td>
+Byte 2
+</td>
+<td>
+Byte 1
+</td>
+<td>
+Byte 0 : Lower Address
+</td>
+</tr>
+</table>
+
+<div id="ARM DATA Types-Endianess-Big Endianess"><h3 id="Big Endianess" class="header"><a href="#ARM DATA Types-Endianess-Big Endianess">Big Endianess</a></h3></div>
+<table>
+<tr>
+<td>
+Byte 3 : Lower Address
+</td>
+<td>
+Byte 2
+</td>
+<td>
+Byte 1
+</td>
+<td>
+Byte 0 : Higher Address
+</td>
+</tr>
+</table>
+
+<div id="ARM DATA Types-ARM Registers"><h2 id="ARM Registers" class="header"><a href="#ARM DATA Types-ARM Registers">ARM Registers</a></h2></div>
+<table>
+<tr>
+<td>
+R0 - R6
+</td>
+<td>
+General Purpose
+</td>
+</tr>
+<tr>
+<td>
+R7
+</td>
+<td>
+Holds Syscall Number
+</td>
+</tr>
+<tr>
+<td>
+R8 - R10
+</td>
+<td>
+General Purpose
+</td>
+</tr>
+<tr>
+<td>
+R11 (Alias: FP)
+</td>
+<td>
+Frame Pointer
+</td>
+</tr>
+</table>
+
+<div id="ARM DATA Types-ARM Registers-Special Purpose Register"><h3 id="Special Purpose Register" class="header"><a href="#ARM DATA Types-ARM Registers-Special Purpose Register">Special Purpose Register</a></h3></div>
+<table>
+<tr>
+<td>
+R12 (Alias: IP)
+</td>
+<td>
+IIntra Procedural Call
+</td>
+</tr>
+<tr>
+<td>
+R13 (Alias: SP)
+</td>
+<td>
+Stack Pointer
+</td>
+</tr>
+<tr>
+<td>
+R14 (Alias: LR)
+</td>
+<td>
+Link Register
+</td>
+</tr>
+<tr>
+<td>
+R15 (Alias: PC)
+</td>
+<td>
+Program Counter
+</td>
+</tr>
+<tr>
+<td>
+CPSR
+</td>
+<td>
+Current Program Status Register
+</td>
+</tr>
+</table>
+
+<div id="ARM DATA Types-ARM Registers-R13 - Stack Pointer"><h3 id="R13 - Stack Pointer" class="header"><a href="#ARM DATA Types-ARM Registers-R13 - Stack Pointer">R13 - Stack Pointer</a></h3></div>
+<ul>
+<li>
+Points to the top of the stack 
+
+<li>
+Once a function is called, we return back to the location last pointed to by the SP
+
+<li>
+Another Purpose is for Space Allocation -&gt; for allocating a 32 Bit value we subtract 4 from the stack pointer
+
+</ul>
+
+<div id="ARM DATA Types-ARM Registers-R14 - Link Register"><h3 id="R14 - Link Register" class="header"><a href="#ARM DATA Types-ARM Registers-R14 - Link Register">R14 - Link Register</a></h3></div>
+<ul>
+<li>
+Once a function call is initiated, the memory space in which the next instruction is stored is loaded into the Link register
+
+<li>
+This helps us to return to the location the function call has first initiated an instruction
+
+<li>
+This helps to return to the parent function which has initiated further child functions
+
+</ul>
+
+<div id="ARM DATA Types-ARM Registers-R15 - Program Counter PC"><h3 id="R15 - Program Counter PC" class="header"><a href="#ARM DATA Types-ARM Registers-R15 - Program Counter PC">R15 - Program Counter PC</a></h3></div>
+<ul>
+<li>
+The PC is automatically incremented by the size of the instruction executed. 
+
+<li>
+In ARM Mode its its 4 Bytes and in thumb mode its 2 Bytes
+
+<li>
+Once a branch instruction is executed the PC hold the destination address that is beeing branched to
+
+<li>
+During execution the PC stores the address of the current instrution plus 8 in ARM mode and plus 4 in thumb mode
+
+</ul>
+
+
+<div id="ARM DATA Types-ARM Registers-Overview CPSR"><h3 id="Overview CPSR" class="header"><a href="#ARM DATA Types-ARM Registers-Overview CPSR">Overview CPSR</a></h3></div>
+<table>
+<tr>
+<td>
+N
+</td>
+<td>
+1 if result of the instruction is a negative number
+</td>
+</tr>
+<tr>
+<td>
+Z
+</td>
+<td>
+1 if result is a 0
+</td>
+</tr>
+<tr>
+<td>
+C
+</td>
+<td>
+1 if result of an addition needs 33rd bit -&gt; carry, if the result of a subtraction is positive or zero, as the result of an inline barrel shifter operation in a move or log. instruction
+</td>
+</tr>
+<tr>
+<td>
+V
+</td>
+<td>
+1 if result cant be represented in 32 bit twos compliment , if result is &gt;= 2^31
+</td>
+</tr>
+<tr>
+<td>
+E
+</td>
+<td>
+0 for little endian , 1 for big endian
+</td>
+</tr>
+<tr>
+<td>
+T
+</td>
+<td>
+1 if in Thumb state and 0 for ARM state
+</td>
+</tr>
+<tr>
+<td>
+M
+</td>
+<td>
+Specifies the privilege mode (USR , SVC , etc.)
+</td>
+</tr>
+<tr>
+<td>
+J
+</td>
+<td>
+Third execution state that allows some ARM Processors to execute Java Byte Code in Hardware
+</td>
+</tr>
+</table>
+
+</body>
+</html>
