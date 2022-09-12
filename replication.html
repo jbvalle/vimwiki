@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>replication</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Replication"><h1 id="Replication" class="header"><a href="#Replication">Replication</a></h1></div>
+<ul>
+<li>
+Scaling by replication is a solution the the latency problem caused by geographically distant server to client routes
+
+<li>
+By create multiple instances of a resource the latency can be hidden from the client
+
+</ul>
+
+<div id="Replication-Downsides"><h2 id="Downsides" class="header"><a href="#Replication-Downsides">Downsides</a></h2></div>
+<ul>
+<li>
+However with replication comes another problem, that is inconsistency. If many replications of an instance exists, changes have to propagated throughout the system to stay up to date
+
+<li>
+Furthermore, in case multiple different changes of replications have be performed, this has to be tackled as well
+
+<li>
+The Developer has to wheigh out the here, to what extent inconsistency is tolarable
+
+<li>
+An example is caching, in this case the client decides if he wants to use that option, in that case a replication is made of that resource. However if changes are made in may not occure immidiately. If it were for stock market exchanges, updates however must be immidiate, in which is inconstency is not as tolerable
+
+</ul>
+
+</body>
+</html>

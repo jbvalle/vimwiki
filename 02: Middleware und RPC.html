@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>02: Middleware und RPC</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Middleware und RPC"><h1 id="Middleware und RPC" class="header"><a href="#Middleware und RPC">Middleware und RPC</a></h1></div>
+
+<div id="1. Aufgabe"><h1 id="1. Aufgabe" class="header"><a href="#1. Aufgabe">1. Aufgabe</a></h1></div>
+
+<div id="1. Aufgabe-ISO - OSI Modell"><h2 id="ISO - OSI Modell" class="header"><a href="#1. Aufgabe-ISO - OSI Modell">ISO - OSI Modell</a></h2></div>
+<ul>
+<li>
+Verpackung der Daten nach einem Protokoll
+
+<li>
+Schichten:
+
+<ul>
+<li>
+physical: Übetragung in binären datenformat
+
+<li>
+Datalink: Checksum
+
+<li>
+Network: IP
+
+<li>
+Transport: Connectionless/-base/-oriented Protokol
+
+<li>
+Session: Wird nicht mehr so oft genutzt, Synchronisierung
+
+</ul>
+</ul>
+
+<div id="1. Aufgabe-TCP/IP"><h2 id="TCP/IP" class="header"><a href="#1. Aufgabe-TCP/IP">TCP/IP</a></h2></div>
+<ul>
+<li>
+Device -&gt; Socket -&gt; PORT -&gt; Socket -&gt; Application 
+
+</ul>
+
+<div id="1. Aufgabe-Transport Layer Protokoll nicht ausreichend"><h2 id="Transport Layer Protokoll nicht ausreichend" class="header"><a href="#1. Aufgabe-Transport Layer Protokoll nicht ausreichend">Transport Layer Protokoll nicht ausreichend</a></h2></div>
+<ul>
+<li>
+Kein Hop von einem Gerät zum nächsten
+
+<li>
+Nur ein Gerät zum nächsten
+
+<li>
+IP ermöglicht Hop von einem Gerät an ein weiteres
+
+</ul>
+
+<div id="2. Aufgabe"><h1 id="2. Aufgabe" class="header"><a href="#2. Aufgabe">2. Aufgabe</a></h1></div>
+
+<div id="2. Aufgabe-Services einer Middleware"><h2 id="Services einer Middleware" class="header"><a href="#2. Aufgabe-Services einer Middleware">Services einer Middleware</a></h2></div>
+<ul>
+<li>
+Lifecycle managment
+
+<li>
+Naming and trading
+
+<li>
+transaction
+
+<li>
+security
+
+<li>
+etc
+
+</ul>
+
+<div id="2. Aufgabe-Middleware - Architectural Styles"><h2 id="Middleware - Architectural Styles" class="header"><a href="#2. Aufgabe-Middleware - Architectural Styles">Middleware - Architectural Styles</a></h2></div>
+<ul>
+<li>
+Kurz früher keine Middleware, mehr aufwand wurde in die anpassung an die hardware investiert -&gt; Lösung: Middleware ansätze damit nicht nur ein Style kompatibel ist.
+
+<li>
+Architectural Styles: Code standard
+
+<li>
+Middleware passt sich dem Architectural Styles an
+
+<li>
+Vorteil: automatisches anpassen
+
+<li>
+Nachteil: nur für services dieses Styles
+
+<li>
+Heute: Ausbauen der Middleware und styles offen lassen damit einbindung in ein system leichter ist, ermöglicht es resourcen eines anderen Rechners leichter anzusprechen:
+
+<ul>
+<li>
+Sicherheit wird ein wichtiges Thema, Wer darf auf meine Resourcen zugreifen? Middleware Cridential check müssen realisiert werden
+
+</ul>
+</ul>
+
+<div id="3. Aufgabe"><h1 id="3. Aufgabe" class="header"><a href="#3. Aufgabe">3. Aufgabe</a></h1></div>
+
+<div id="3. Aufgabe-Middleware Flexibler und effizienter gestalten"><h2 id="Middleware Flexibler und effizienter gestalten" class="header"><a href="#3. Aufgabe-Middleware Flexibler und effizienter gestalten">Middleware Flexibler und effizienter gestalten</a></h2></div>
+
+<div id="3. Aufgabe-Interceptoren"><h2 id="Interceptoren" class="header"><a href="#3. Aufgabe-Interceptoren">Interceptoren</a></h2></div>
+<ul>
+<li>
+Bei einer client server verbindung: spielt der interceptor der server zu sein und unterbricht den kommunikationsfluss
+
+<li>
+Mögliche Anwendung: intercepten des Kommunikationsfluss und druchführen eines Security checks, wenn der nicht bestanden wird, wird der nicht an der Serverside weitergegeben
+
+<li>
+Falls die Serverside ausfällt und andere server zur verfügung stehen, kann der interceptor selbst den check prüfn welcher server die information erhalten darf, alle diese prozesse können vom interceptor durchgeführt werden ohne dass alle diese programm am client oder server implementiert werden müssen
+
+<li>
+Vorteil:
+
+<ul>
+<li>
+Sicherheitsprogramme müssen nicht alle an der Serverside implementiert werden
+
+<li>
+Erweiterung des Systems um weitere Programme ohne client  und server weiter zu überlasten
+
+</ul>
+</ul>
+
+<div id="3. Aufgabe-Adaptivität"><h2 id="Adaptivität" class="header"><a href="#3. Aufgabe-Adaptivität">Adaptivität</a></h2></div>
+
+<div id="3. Aufgabe-Selfmanagement"><h2 id="Selfmanagement" class="header"><a href="#3. Aufgabe-Selfmanagement">Selfmanagement</a></h2></div>
+
+<div id="4. Aufgabe"><h1 id="4. Aufgabe" class="header"><a href="#4. Aufgabe">4. Aufgabe</a></h1></div>
+
+<div id="4. Aufgabe-RPC"><h2 id="RPC" class="header"><a href="#4. Aufgabe-RPC">RPC</a></h2></div>
+<ul>
+<li>
+Grundidee:
+
+<ul>
+<li>
+Computing nicht alles an einem rechner -&gt; umlagern auf mehrere Rechner
+
+<li>
+Anschein einer normlen lokalen function call obwohl es remote durchgeführt wird (local, access transparency)
+
+<li>
+Transparency kann bei fehlern nicht mehr erhalten werden, falls Prog2 ausfällt, entfällt die rechenresource -&gt; fehlertransparenz entfällt
+
+<li>
+Als Programmierer können error handling implmentiert werden die bei so einem fall erforderliche error messages generieren die auf eine network error hinweisen
+
+<li>
+Frage: Wie transparent will man es haben?
+
+<li>
+All das wird automatisch durchgeführt ohne dass der programmierer oder benutzer explizit remote prozess implmentieren müssen -&gt; wird vom Clientstub server stub automatisch gemacht
+
+</ul>
+<li>
+Prog1 -&gt; Middleware: Client Stub -&gt; Middleware Server Stub -&gt; Prog2
+
+</ul>
+    
+<div id="5. Aufgabe"><h1 id="5. Aufgabe" class="header"><a href="#5. Aufgabe">5. Aufgabe</a></h1></div>
+
+<div id="5. Aufgabe-Variablen bei RPC aufrufen"><h2 id="Variablen bei RPC aufrufen" class="header"><a href="#5. Aufgabe-Variablen bei RPC aufrufen">Variablen bei RPC aufrufen</a></h2></div>
+<ul>
+<li>
+Call by reference -&gt; Call by copy and restore (Kein echter Call by reference)
+
+<ul>
+<li>
+Übertragung der Addresse / Referenz sowie ihren Wert
+
+<li>
+Dieser wert kann remote verändert werden, das Gerät erhält die datenstruktur und erneuert den wert an dieser addresse
+
+<li>
+Das Ermöglicht es einen erweitererten Speicher zu nutzen
+
+</ul>
+<li>
+Call by Value: Übertragung vom Wert der Variable
+
+</ul>
+
+<div id="5. Aufgabe-Mögliche Probleme"><h2 id="Mögliche Probleme" class="header"><a href="#5. Aufgabe-Mögliche Probleme">Mögliche Probleme</a></h2></div>
+<ul>
+<li>
+Call by reference funktionirt nicht mit der herkömmlichen dereferenzierung an einem lokalen rechner
+
+<li>
+Sobald ein rechner mit einer variable arbeitet und der remote PC mit der selber variable (copy) arbeitet und diese zusammengeführt werden kommt es zu inconcistency problemen
+
+</ul>
+
+<div id="6. Aufgabe"><h1 id="6. Aufgabe" class="header"><a href="#6. Aufgabe">6. Aufgabe</a></h1></div>
+
+<div id="6. Aufgabe-RPC Client , server schreiben"><h2 id="RPC Client , server schreiben" class="header"><a href="#6. Aufgabe-RPC Client , server schreiben">RPC Client , server schreiben</a></h2></div>
+
+<div id="6. Aufgabe-IDL für rpc"><h2 id="IDL für rpc" class="header"><a href="#6. Aufgabe-IDL für rpc">IDL für rpc</a></h2></div>
+<ul>
+<li>
+UUIDGEN: Generiert Interface -&gt; IDF
+
+<li>
+IDF: Generiert eine eindeutige Identification number abhängig von Ort und Zeit, wird zwischen Client und Server gecheckt: -&gt;
+
+<ul>
+<li>
+enthält File mit protokollen und methoden
+
+</ul>
+<li>
+Compiler (IDL - Compiler):
+
+<ul>
+<li>
+Stub, jeweils für sever und client
+
+<li>
+Header: Wird zum client und server code dazugelinkt -&gt; client/server mitdem stub linken header dazu und generieren binary
+
+</ul>
+</ul>
+
+<div id="7. Aufgabe"><h1 id="7. Aufgabe" class="header"><a href="#7. Aufgabe">7. Aufgabe</a></h1></div>
+
+<div id="7. Aufgabe-arten von asynchrone RPC"><h2 id="arten von asynchrone RPC" class="header"><a href="#7. Aufgabe-arten von asynchrone RPC">arten von asynchrone RPC</a></h2></div>
+
+</body>
+</html>

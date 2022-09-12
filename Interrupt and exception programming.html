@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Interrupt and exception programming</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Interrupt and Exception Programming"><h1 id="Interrupt and Exception Programming" class="header"><a href="#Interrupt and Exception Programming">Interrupt and Exception Programming</a></h1></div>
+
+<div id="Interrupt and Exception Programming-Interrupt vs Polling"><h2 id="Interrupt vs Polling" class="header"><a href="#Interrupt and Exception Programming-Interrupt vs Polling">Interrupt vs Polling</a></h2></div>
+<ul>
+<li>
+Polling: Periodic Checking if certain condition has been met, accordingly an action is performed:
+
+<ul>
+<li>
+The Problem with this approach is that the cpu is permanently busy
+
+</ul>
+<li>
+Interrupt: the CPU is free to perform other tasks and is preempted if interrupt occurs
+
+</ul>
+
+<div id="Interrupt and Exception Programming-Interrupt Service Routine"><h2 id="Interrupt Service Routine" class="header"><a href="#Interrupt and Exception Programming-Interrupt Service Routine">Interrupt Service Routine</a></h2></div>
+<ul>
+<li>
+Every Interrupt Request is associated with an interrupt rountine
+
+<li>
+Once an Interrupt occurs the program counter is pushed to the location of the interrupt routine associated with the IRQ
+
+</ul>
+
+<div id="Interrupt and Exception Programming-Interrupt Vector Table"><h2 id="Interrupt Vector Table" class="header"><a href="#Interrupt and Exception Programming-Interrupt Vector Table">Interrupt Vector Table</a></h2></div>
+<ul>
+<li>
+The Interrupt Vector Table is the lowest 1024 byte Area in memory space
+
+<li>
+This area holds the addresses the IRQ are associated with the ISR
+
+<li>
+In Cortex M4 there is a total of 47 Interrupts
+
+</ul>
+
+<div id="Interrupt and Exception Programming-NVIC"><h2 id="NVIC" class="header"><a href="#Interrupt and Exception Programming-NVIC">NVIC</a></h2></div>
+<ul>
+<li>
+The NVIC is the nested vector interrupt controller. Peripherals send there Interrupt signals to the NVIC -&gt; which in turn interact with the CPU to push the PC to the specified device.
+
+<li>
+NVIC can handle a total of 0x01 - 0xFF Interrupts and exceptions
+
+<li>
+The first 15 Interrupts INT1 - INT15 are reserved for internal use
+
+<li>
+The first INT1 is stored at 0x0000 0004
+
+<li>
+0x00 - 0x03 is reserved for the stack pointers initial value after power up
+
+<li>
+Starting from INT16 - 0x0000 0040 the peripheral interrupts are stored
+
+</ul>
+
+<div id="Interrupt and Exception Programming-Handling Reset Interrupt"><h2 id="Handling Reset Interrupt" class="header"><a href="#Interrupt and Exception Programming-Handling Reset Interrupt">Handling Reset Interrupt</a></h2></div>
+<ol>
+<li>
+Once the device powers up from reset, cortex m4 loads PC from memory location 0x0000 0004:
+
+<ol>
+<li>
+because of that, we must place the starting address of the program which should start after reset at location 0x0004
+
+<li>
+0x0000 - 0x0003 is set aside for the initial stack pointer value, this ensures the the cortex m4 chip has immidiate access to the stack memory
+
+</ol>
+</ol>
+
+<div id="Interrupt and Exception Programming-Non-Maskable and maskable interrupts"><h2 id="Non-Maskable and maskable interrupts" class="header"><a href="#Interrupt and Exception Programming-Non-Maskable and maskable interrupts">Non-Maskable and maskable interrupts</a></h2></div>
+<ul>
+<li>
+Maskable interrupts:
+
+<ul>
+<li>
+These are IRQ, these can be masked/ignored or unmasked 
+
+</ul>
+<li>
+Non maskable interrupts - NMI:
+
+<ul>
+<li>
+These can not be ignored and must be executed:
+
+<ul>
+<li>
+ARM COrtex has assigned INT2 for NMI
+
+<li>
+Memory location 0x0008 - 0x000B is the 4 byte address of ISR for NMI
+
+</ul>
+</ul>
+</ul>
+
+<div id="Interrupt and Exception Programming-Exceptions"><h2 id="Exceptions" class="header"><a href="#Interrupt and Exception Programming-Exceptions">Exceptions</a></h2></div>
+<ul>
+<li>
+Exceptions compared to Interrupts are internally invoked by the processor in case a fault occurs or for other special scenarios
+
+</ul>
+
+<div id="Interrupt and Exception Programming-Exceptions-Hard Fault"><h3 id="Hard Fault" class="header"><a href="#Interrupt and Exception Programming-Exceptions-Hard Fault">Hard Fault</a></h3></div>
+<ul>
+<li>
+This is invoked if the CPU handles an undefined isntruction, or half alligned or any misalliggned memory access is beeing trie
+
+</ul>
+
+<div id="Interrupt and Exception Programming-Exceptions-SVCall"><h3 id="SVCall" class="header"><a href="#Interrupt and Exception Programming-Exceptions-SVCall">SVCall</a></h3></div>
+<ul>
+<li>
+An ISR is called upon an execution of SVC (SWI in earlier versions).
+
+<li>
+Once SVC is invoked the CPU will go to memory location 0x002C to get the address of the ISR associated with SVC.
+
+<li>
+This is  invoked to execute OS kernel function with high privilege access
+
+</ul>
+
+<div id="Interrupt and Exception Programming-Exceptions-PENDSV"><h3 id="PENDSV" class="header"><a href="#Interrupt and Exception Programming-Exceptions-PENDSV">PENDSV</a></h3></div>
+<ul>
+<li>
+Similarly to SVC but ISR are pended in case high priority Interrupts are triggered
+
+</ul>
+
+<div id="Interrupt and Exception Programming-IRQ Peripheral"><h2 id="IRQ Peripheral" class="header"><a href="#Interrupt and Exception Programming-IRQ Peripheral">IRQ Peripheral</a></h2></div>
+<ul>
+<li>
+these are triggered by peripheral devices. Reachin from INT16 - INT 47
+
+</ul>
+
+<div id="Interrupt and Exception Programming-Fast context saving in task switching"><h2 id="Fast context saving in task switching" class="header"><a href="#Interrupt and Exception Programming-Fast context saving in task switching">Fast context saving in task switching</a></h2></div>
+<ul>
+<li>
+As interrupts are asynchronous, the current register values have to be saved in stack
+
+<li>
+As this can be very tedious, cortex m devices have automated these processes once an interrupt is triggered:
+
+<ul>
+<li>
+CPSR
+
+<li>
+PC
+
+<li>
+LR
+
+<li>
+R12
+
+<li>
+R3
+
+<li>
+R2
+
+<li>
+R1
+
+</ul>
+<li>
+If depending on the ISR more Registers have to be perserved, this has to be handled manually
+
+</ul>
+
+<div id="Interrupt and Exception Programming-How interrupts are handled in cortex m processors"><h2 id="How interrupts are handled in cortex m processors" class="header"><a href="#Interrupt and Exception Programming-How interrupts are handled in cortex m processors">How interrupts are handled in cortex m processors</a></h2></div>
+<ol>
+<li>
+The current processor status register CPSR is push unto the stack and the SP is decremented by the 4 byttes of CPSR Register
+
+<li>
+PC (R15) is pushed unto the stack and SP is decremented by 4
+
+<li>
+LR (R14) is pushed unto the stack and SP is decremented by 4
+
+<li>
+R12 is pushed unto the stack and SP is decremented by 4
+
+<li>
+R3 is pushed unto the stack and SP is decremented by 4
+
+<li>
+R3 is pushed unto the stack and SP is decremented by 4
+
+<li>
+R1 is pushed unto the stack and SP is decremented by 4
+
+<li>
+R0 is pushed unto the stack and SP is decremented by 4
+
+<li>
+CPU goes into handle mode and LR is loaded with 0xFFFF FFFX -&gt; BIT31:5 are one
+
+<li>
+The INT number is multiplied by for to get the memory address in the vector table as INT1 starts at 0x0004
+
+<li>
+From the memory location pointed to by the PC the concerning ISR is executed
+
+<li>
+When one of the return instructions are exectued in the ISR, CPU recognized that its in handle mode by the 0xFFFF FFFX value in LR. After the ISR, it then restores the Register values and continues where is started of before the ISR
+
+</ol>
+
+<div id="Interrupt and Exception Programming-Interrupt priority"><h2 id="Interrupt priority" class="header"><a href="#Interrupt and Exception Programming-Interrupt priority">Interrupt priority</a></h2></div>
+<table>
+<tr>
+<th>
+INT#
+</th>
+<th>
+interrupt
+</th>
+<th>
+Priority level
+</th>
+</tr>
+<tr>
+<td>
+0
+</td>
+<td>
+Stack pointer init value
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+Reset
+</td>
+<td>
+-3 highest
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+NMI
+</td>
+<td>
+-2
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+Hard Fault
+</td>
+<td>
+-1
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+memory management fault
+</td>
+<td>
+reserved
+</td>
+</tr>
+<tr>
+<td>
+5
+</td>
+<td>
+bus fault
+</td>
+<td>
+reserved
+</td>
+</tr>
+<tr>
+<td>
+6
+</td>
+<td>
+Usuage fault
+</td>
+<td>
+reserved
+</td>
+</tr>
+<tr>
+<td>
+7
+</td>
+<td>
+reserved
+</td>
+<td>
+reserved
+</td>
+</tr>
+<tr>
+<td>
+8
+</td>
+<td>
+reserved
+</td>
+<td>
+reserved
+</td>
+</tr>
+<tr>
+<td>
+9
+</td>
+<td>
+reserved
+</td>
+<td>
+reserved
+</td>
+</tr>
+<tr>
+<td>
+10
+</td>
+<td>
+reserved
+</td>
+<td>
+reserved
+</td>
+</tr>
+<tr>
+<td>
+11
+</td>
+<td>
+SVCall
+</td>
+<td>
+Programmable
+</td>
+</tr>
+<tr>
+<td>
+12
+</td>
+<td>
+reserved
+</td>
+<td>
+reserved
+</td>
+</tr>
+<tr>
+<td>
+13
+</td>
+<td>
+Reserved
+</td>
+<td>
+reserved
+</td>
+</tr>
+<tr>
+<td>
+14
+</td>
+<td>
+PendSV
+</td>
+<td>
+Programmable
+</td>
+</tr>
+<tr>
+<td>
+15
+</td>
+<td>
+SysTick
+</td>
+<td>
+Programmable
+</td>
+</tr>
+<tr>
+<td>
+16
+</td>
+<td>
+IRQ0 for peripherals
+</td>
+<td>
+Programmable
+</td>
+</tr>
+<tr>
+<td>
+17
+</td>
+<td>
+IRQ1 for peripherals
+</td>
+<td>
+Programmable
+</td>
+</tr>
+<tr>
+<td>
+...
+</td>
+<td>
+...
+</td>
+<td>
+Programmable
+</td>
+</tr>
+<tr>
+<td>
+255
+</td>
+<td>
+IRW 239
+</td>
+<td>
+Programmable
+</td>
+</tr>
+</table>
+
+</body>
+</html>

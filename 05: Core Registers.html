@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>05: Core Registers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Core Registers"><h1 id="Core Registers" class="header"><a href="#Core Registers">Core Registers</a></h1></div>
+
+<table>
+<tr>
+<th>
+Registers
+</th>
+<th>
+Function
+</th>
+</tr>
+<tr>
+<td>
+R0 - r12
+</td>
+<td>
+General Purpose Registers
+</td>
+</tr>
+<tr>
+<td>
+Stack Pointer (SP - R13)
+</td>
+<td>
+Stores the address of last executed instruction
+</td>
+</tr>
+<tr>
+<td>
+Link Register (LR - R14)
+</td>
+<td>
+Stores return information for subroutines, function calls and exceptions, on Reset -&gt; Processor sets LR to 0xFFFFFFFF
+</td>
+</tr>
+<tr>
+<td>
+Program Counter (PC - R15)
+</td>
+<td>
+Holds the address of the next instruction to be executed
+</td>
+</tr>
+</table>
+
+<div id="Core Registers-Program Counter"><h2 id="Program Counter" class="header"><a href="#Core Registers-Program Counter">Program Counter</a></h2></div>
+<ul>
+<li>
+Application Program Status Reigster APSR:
+
+<ul>
+<li>
+Hold N, Z, C, V, Q Flags
+
+</ul>
+<li>
+Interrupt Program Status Register IPSR:
+
+<ul>
+<li>
+Hold the current exception number 
+
+</ul>
+<li>
+Execution Program Status Regiser EPSR:
+
+<ul>
+<li>
+Holds ICI/IT
+
+<li>
+Holds T Bit: if T=1 Thumb mode | T=0 ARM Mode
+
+</ul>
+</ul>
+
+</body>
+</html>

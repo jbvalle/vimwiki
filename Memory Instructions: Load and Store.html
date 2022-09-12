@@ -10,5 +10,35 @@
 
 <div id="Load and Store"><h1 id="Load and Store" class="header"><a href="#Load and Store">Load and Store</a></h1></div>
 
+<div id="Load and Store-Address Mode: Offset - Using Immidiate value"><h2 id="Address Mode: Offset - Using Immidiate value" class="header"><a href="#Load and Store-Address Mode: Offset - Using Immidiate value">Address Mode: Offset - Using Immidiate value</a></h2></div>
+<p>
+str r2, [r1, #2]
+</p>
+<ul>
+<li>
+store value stored in (r1 + 2) in r2 without changing value in r1
+
+</ul>
+
+<div id="Load and Store-Address Mode: Offset - Using Immidiate value -&gt; Pre Indexed"><h2 id="Address Mode: Offset - Using Immidiate value -&gt; Pre Indexed" class="header"><a href="#Load and Store-Address Mode: Offset - Using Immidiate value -&gt; Pre Indexed">Address Mode: Offset - Using Immidiate value -&gt; Pre Indexed</a></h2></div>
+<p>
+str r2, [r1, #2]!
+</p>
+<ul>
+<li>
+store value stored in (r1 + 2) in r2, Register R1 changed to R1 = R1 + 2
+
+</ul>
+
+<div id="Load and Store-Address Mode: Offset - Using Immidiate value -&gt; Post Indexed"><h2 id="Address Mode: Offset - Using Immidiate value -&gt; Post Indexed" class="header"><a href="#Load and Store-Address Mode: Offset - Using Immidiate value -&gt; Post Indexed">Address Mode: Offset - Using Immidiate value -&gt; Post Indexed</a></h2></div>
+<p>
+ldr r3, [r1], #4
+</p>
+<ul>
+<li>
+load Value found in r1 into register r3, and change r1 = r1 + 4
+
+</ul>
+
 </body>
 </html>

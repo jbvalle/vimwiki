@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>hiding communication latencies</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Hiding Communication Latencies"><h1 id="Hiding Communication Latencies" class="header"><a href="#Hiding Communication Latencies">Hiding Communication Latencies</a></h1></div>
+<ul>
+<li>
+Latencies usually occure in synchronous communication where the client halts all processes until it recieves a response
+
+</ul>
+
+<div id="Hiding Communication Latencies-Solution"><h2 id="Solution" class="header"><a href="#Hiding Communication Latencies-Solution">Solution</a></h2></div>
+<ul>
+<li>
+A general solution is to eliminate sychronous communication and replace it with asynchronous once
+
+<li>
+Meanwhile the client can work on other process, once a reply is recieved interrupt handler can continue that halted process
+
+</ul>
+
+<ul>
+<li>
+In case user has no other choice but to wait:
+
+<ul>
+<li>
+In that case e.g. waiting for logging into a server, the user has no other choice but to wait
+
+<li>
+A solution would be to move part of the computation to the client. This is done by shipping the computing code to the client
+
+<li>
+For instance, when accessing a database, the necessary code for filling in a form to access the database as well as checking the correctness of the filled form can all be done at the client
+
+<li>
+The server than only recieves the finished form and can then process the form and enter it or provide information from the database
+
+</ul>
+</ul>
+
+</body>
+</html>
