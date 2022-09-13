@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Affine Verschlüsselung</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Affine Verschlüsselung"><h1 id="Affine Verschlüsselung" class="header"><a href="#Affine Verschlüsselung">Affine Verschlüsselung</a></h1></div>
+<ul>
+<li>
+Schlüssel: k = (t,e);
+
+<li>
+Verschlüsselung : y = t * x + e (mod 26)  | mod meistens 26
+
+<li>
+Entschlüsselung : x = t^-1  (y - e) (mod 26):
+
+<ul>
+<li>
+Vorrausetzung:
+
+<ul>
+<li>
+t und n teilfremd -&gt; ggT(t,n)=1
+
+</ul>
+</ul>
+</ul>
+        
+<div id="Affine Verschlüsselung-Beispiel"><h2 id="Beispiel" class="header"><a href="#Affine Verschlüsselung-Beispiel">Beispiel</a></h2></div>
+<ul>
+<li>
+"ATTACK", k (9, 13) | A = 0
+
+<li>
+ggT von 9 und 26 prüfen:
+
+<ul>
+<li>
+Kopfrechen Tipp:
+
+<ul>
+<li>
+Im Kopf faktorisieren -&gt; gleiche Faktoren vergleichen
+
+</ul>
+</ul>
+<li>
+falls ggT vorhanden:
+
+<ul>
+<li>
+multiplikatives inverses:
+
+<ul>
+<li>
+1. 1/n + x * mod_num -&gt; solange bis zahl element Z_mod
+
+</ul>
+</ul>
+</ul>
+
+</body>
+</html>

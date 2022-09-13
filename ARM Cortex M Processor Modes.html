@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>ARM Cortex M Processor Modes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="ARM Cortex Processort Modes"><h1 id="ARM Cortex Processort Modes" class="header"><a href="#ARM Cortex Processort Modes">ARM Cortex Processort Modes</a></h1></div>
+
+<div id="ARM Cortex Processort Modes-2 Stacks in ARM Cortex"><h2 id="2 Stacks in ARM Cortex" class="header"><a href="#ARM Cortex Processort Modes-2 Stacks in ARM Cortex">2 Stacks in ARM Cortex</a></h2></div>
+<ul>
+<li>
+R13 SP is used to point to RAM
+
+<li>
+Two Stack pointer registers are used:
+
+<ul>
+<li>
+PSP - Processor Stack pointer - used in thread mode
+
+<li>
+MSP - Main Stack Pointer - used in handler mode
+
+</ul>
+</ul>
+
+<div id="ARM Cortex Processort Modes-Configure Stack Pointer wit Special function register CONTROL"><h2 id="Configure Stack Pointer wit Special function register CONTROL" class="header"><a href="#ARM Cortex Processort Modes-Configure Stack Pointer wit Special function register CONTROL">Configure Stack Pointer wit Special function register CONTROL</a></h2></div>
+<ul>
+<li>
+NPRIV:
+
+<ul>
+<li>
+0: Priviliged
+
+<li>
+1: Unpriviliged
+
+</ul>
+<li>
+Active Stack Pointer ASP:
+
+<ul>
+<li>
+0 MSP
+
+<li>
+1 PSP
+
+</ul>
+<li>
+Flaoting Point  context active FPCA:
+
+<ul>
+<li>
+0 No floating point context active
+
+<li>
+1 Floating point context active
+
+</ul>
+</ul>
+    
+<div id="ARM Cortex Processort Modes-Special Function Register"><h2 id="Special Function Register" class="header"><a href="#ARM Cortex Processort Modes-Special Function Register">Special Function Register</a></h2></div>
+<ul>
+<li>
+General Purpose Reigsers are R0 - R15 which can be accessed with MOV, LDR and STR
+
+<li>
+As for SFR these have to be move to General Purpose Register using the Main Stack pointer, manipulate them and then move the back using the Main Stack pointer
+
+</ul>
+
+</body>
+</html>

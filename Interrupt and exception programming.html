@@ -465,5 +465,53 @@ Programmable
 </tr>
 </table>
 
+<div id="Interrupt and Exception Programming-Interrupt Latency"><h2 id="Interrupt Latency" class="header"><a href="#Interrupt and Exception Programming-Interrupt Latency">Interrupt Latency</a></h2></div>
+<ul>
+<li>
+this is the time when an interrupt is invoked until the ISR is executed
+
+<li>
+Factors:
+
+<ul>
+<li>
+the currently preemptive process, if the currently running process takes more clock cycles to finish, this adds to the total latency
+
+<li>
+The time until registers are stored into the stack:
+
+<ul>
+<li>
+CPSR
+
+<li>
+PC
+
+<li>
+LR
+
+<li>
+R12
+
+<li>
+R0 - R
+
+</ul>
+<li>
+The priority is important to, if a higher priority interrupt was invoked at the same time, the current interrupt has to wait until the former has finished
+
+</ul>
+</ul>
+    
+<div id="Interrupt and Exception Programming-nested interrupts"><h2 id="nested interrupts" class="header"><a href="#Interrupt and Exception Programming-nested interrupts">nested interrupts</a></h2></div>
+<ul>
+<li>
+In general a higher priority interrupt will always masked lower priority interrupts
+
+<li>
+in cortex m processors the programmer is assigned the task to decide how priorities and nested interrupts are handled escept with NMI and hardfault
+
+</ul>
+
 </body>
 </html>
