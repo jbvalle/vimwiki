@@ -30,6 +30,14 @@ etc.
 </ul>
     
 <div id="STM32 ARM I/0 Port interrupt programming-Procedure to configure I/O Interrupt"><h2 id="Procedure to configure I/O Interrupt" class="header"><a href="#STM32 ARM I/0 Port interrupt programming-Procedure to configure I/O Interrupt">Procedure to configure I/O Interrupt</a></h2></div>
+<ol>
+<li>
+Configure SYSCFG-&gt;EXTICR[X]
+
+<li>
+Configure affected interrupt pin as input with GPIOx-&gt;MODER
+
+</ol>
 
 </body>
 </html>
